@@ -24,6 +24,7 @@ html{scroll-padding-top:env(safe-area-inset-top,0px);-webkit-text-size-adjust:10
 html{background:var(--bg)}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.4 var(--body);-webkit-tap-highlight-color:transparent;touch-action:manipulation;overscroll-behavior-y:none}
 main>.wl{width:100%}
+.ver{text-align:center;color:var(--mute);font-size:12px;opacity:.7;margin:24px 0 0}
 main{max-width:560px;margin:0 auto;padding:20px max(16px,env(safe-area-inset-right)) 190px max(16px,env(safe-area-inset-left))}
 h1{font:700 46px/1 var(--disp);margin:8px 0 4px;letter-spacing:.01em}
 .sub{color:var(--mute);margin:0 0 20px}
@@ -457,12 +458,14 @@ function logv(){
  return '<h1>History</h1><div class="seg">Weight unit <button data-a="unit" data-u="lb" class="'+(S.unit==='lb'?'on':'')+'">lb</button><button data-a="unit" data-u="kg" class="'+(S.unit==='kg'?'on':'')+'">kg</button></div>'+backupv()+
  (items||'<p class="empty">No workouts yet. Finish a session on the Train tab and it will show up here.</p>');
 }
+const APP_VERSION='0.00.01';
 function render(){
  armed=null;
  $('#app').className=tab==='train'&&!S.active?'h':'';
  document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('on',b.dataset.t===tab));
  wakeSync();
  $('#app').innerHTML=tab==='train'?(S.active?active():home()):tab==='photos'?photov():tab==='prog'?progv():tab==='insp'?inspv():tab==='reward'?rewardv():logv()+'<button class="lnk" data-a="wipe">Erase all data</button>';
+ $('#app').insertAdjacentHTML('beforeend','<div class="ver">v'+APP_VERSION+'</div>');
  tick();
 }
 async function wakeSync(){
