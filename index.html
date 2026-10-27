@@ -91,8 +91,12 @@ li span{color:var(--mute);text-align:right}
 .an{margin:0 0 8px;text-align:center;background:linear-gradient(160deg,var(--t1),var(--t2));border-radius:10px;padding:6px 6px 2px}
 .an svg{width:100%;height:230px;display:block}
 .an figcaption{font-size:12px;color:var(--ink);padding:0 0 6px;opacity:.9}
-.pl{max-height:240px;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;background:var(--card);border:1px solid var(--line);border-radius:14px;margin:4px 0 10px}
-.pl button{display:flex;justify-content:space-between;align-items:center;width:100%;background:none;border:0;border-bottom:1px solid var(--line);color:var(--ink);font:600 16px var(--body);padding:14px;text-align:left}
+.addbig{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;background:var(--yel);color:#1a1400;border:0;border-radius:16px;font:700 22px var(--disp);padding:18px 16px;margin:14px 0;letter-spacing:.02em;box-shadow:0 4px 16px rgba(0,0,0,.28)}
+.addbig svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:3.2;stroke-linecap:round}
+.ps{width:100%;height:46px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:500 16px var(--body);padding:0 14px;margin:0 0 8px}
+.pl{max-height:min(52vh,420px);overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;background:var(--card);border:1px solid var(--line);border-radius:14px;margin:4px 0 10px}
+.pl [hidden]{display:none!important}
+.pl button{display:flex;flex-direction:column;align-items:flex-start;gap:3px;width:100%;background:none;border:0;border-bottom:1px solid var(--line);color:var(--ink);font:600 16px var(--body);padding:14px;text-align:left}
 .pl button:last-child{border-bottom:0}
 .pl small{color:var(--mute);font-weight:400;font-size:13px}
 .pg{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:14px}
@@ -109,8 +113,10 @@ button:disabled{opacity:.4}
 .pg button.sl::after{content:"✓";position:absolute;top:6px;right:6px;width:24px;height:24px;border-radius:50%;background:var(--acc);color:var(--onacc);display:grid;place-items:center;font-size:14px}
 #ov{position:fixed;inset:0;z-index:50;background:#000;color:#fff}
 #ov[hidden]{display:none}
-#cv,.gh,.pf img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
-#cv.mir{transform:scaleX(-1)}
+#cv,#sk,.gh,.pf img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+#cv.mir,#sk.mir{transform:scaleX(-1)}
+#sk{pointer-events:none}
+.cf{position:absolute;left:0;right:0;bottom:calc(92px + env(safe-area-inset-bottom,0px));text-align:center;font:600 15px/1.35 var(--body);text-shadow:0 1px 3px #000;padding:0 16px;pointer-events:none}
 .gh{opacity:.3;pointer-events:none}
 .pf{position:absolute;inset:0}
 .cb{position:absolute;left:0;right:0;bottom:calc(20px + env(safe-area-inset-bottom,0px));display:flex;justify-content:space-around;align-items:center}
@@ -136,7 +142,7 @@ select{width:100%;height:48px;font:600 16px var(--body);color:var(--ink);backgro
 #tn{font-size:14px;max-width:96px}
 #tl2{font:700 38px/1 var(--disp);flex:1}
 #tm button{background:transparent;border:1px solid currentColor;color:inherit;border-radius:10px;font:600 15px var(--body);height:44px;padding:0 12px}
-.pc{position:absolute;top:50%;left:0;right:0;transform:translateY(-50%);text-align:center;font:700 150px/1 var(--disp);text-shadow:0 2px 12px #000;pointer-events:none}
+.pc{position:absolute;top:calc(88px + env(safe-area-inset-top,0px));left:0;right:0;text-align:center;font:700 84px/1 var(--disp);text-shadow:0 2px 12px #000;pointer-events:none}
 .cn{padding:0 16px}
 .vl{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
 .vl .rt{margin:0;padding:12px 14px}
@@ -144,14 +150,14 @@ select{width:100%;height:48px;font:600 16px var(--body);color:var(--ink);backgro
 .vn{color:var(--mute);font-size:13px;margin:8px 0}
 body::before{content:"";position:fixed;top:0;left:0;right:0;height:env(safe-area-inset-top,0px);background:#1b5fa6;z-index:40}
 main.h{padding-top:0}
-.hero{margin:0 calc(-1*max(16px,env(safe-area-inset-right))) 20px calc(-1*max(16px,env(safe-area-inset-left)));padding:18px 20px 22px;color:#fff;background:linear-gradient(160deg,var(--h1),var(--h2));border-radius:0 0 28px 28px}
-.hero h1{font:800 34px/1.05 var(--disp);margin:2px 0 16px;color:#fff}
+.hero{margin:0 calc(-1*max(16px,env(safe-area-inset-right))) 20px calc(-1*max(16px,env(safe-area-inset-left)));padding:18px 20px 22px;color:var(--on);background:linear-gradient(160deg,var(--h1),var(--h2));border-radius:0 0 28px 28px}
+.hero h1{font:800 34px/1.05 var(--disp);margin:2px 0 16px;color:var(--on)}
 .hl{font:600 12px var(--body);opacity:.8;text-transform:uppercase;letter-spacing:.08em}
 .wk{display:flex;justify-content:space-between;margin-bottom:16px}
 .dy{display:flex;flex-direction:column;align-items:center;gap:6px}
 .dy small{font:600 12px var(--body);opacity:.75}
-.dy i{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font:600 14px var(--body);border:2px solid rgba(255,255,255,.28)}
-.dy.t i{border-color:#fff}
+.dy i{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font:600 14px var(--body);border:2px solid var(--ovb,rgba(255,255,255,.28))}
+.dy.t i{border-color:var(--on)}
 .dy.d i{background:var(--yel);border-color:var(--yel);color:#1d1329;font-size:16px}
 .sc{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:12px}
 .sc b{display:block;font-weight:600;margin-bottom:8px}
@@ -159,7 +165,20 @@ main.h{padding-top:0}
 .seg{display:flex;gap:6px}
 .seg button{flex:1;min-height:42px;border-radius:10px;border:1px solid var(--line);background:transparent;color:var(--ink);font:600 13px var(--body);padding:0 4px}
 .seg button.on{background:var(--acc);color:var(--onacc);border-color:var(--acc)}
+.bwn{font-size:12px;color:var(--mute);margin:4px 0 8px}
 .sw{display:flex;gap:10px;flex-wrap:wrap}
+.sw button.cus{display:grid;place-items:center;background:transparent;color:var(--ink);border:3px solid transparent;box-shadow:0 0 0 1.5px var(--ink)}
+.sw button.cus svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round}
+.cp{margin-top:16px}
+.cpw{position:relative;width:min(100%,250px);aspect-ratio:1;margin:0 auto}
+.cpw canvas{width:100%;height:100%;border-radius:50%;display:block;touch-action:none;cursor:crosshair}
+#cwv{position:absolute;inset:0;border-radius:50%;background:#000;pointer-events:none}
+#cwm{position:absolute;width:22px;height:22px;border:3px solid #fff;border-radius:50%;box-shadow:0 0 0 1.5px #000,inset 0 0 0 1.5px #000;transform:translate(-50%,-50%);pointer-events:none}
+.cpr{display:flex;align-items:center;gap:10px;margin-top:12px;font-size:13px}
+.cpr span{width:52px;color:var(--mute)}
+.cpr input[type=range]{flex:1;accent-color:var(--acc);min-width:0}
+.cpr output{width:30px;text-align:right}
+.cpr .hx{flex:1;min-width:0;height:38px;border-radius:10px;border:1px solid var(--line);background:transparent;color:var(--ink);font:600 15px var(--body);padding:0 10px;text-transform:uppercase}
 .sw button{width:40px;height:40px;border-radius:50%;border:3px solid transparent;box-shadow:0 0 0 1px var(--line)}
 .sw button.on{border-color:var(--ink)}
 main{zoom:var(--zm,1)}
@@ -170,10 +189,18 @@ main{zoom:var(--zm,1)}
 .gl b{display:block;font-weight:600}
 .gl small{display:block;opacity:.75;margin-top:2px;font-size:12px}
 .gp{display:flex;gap:6px;margin-top:10px}
+.gp button.on,.seg button.okb{background:var(--acc);color:var(--onacc);border-color:var(--acc)}
+.gp .ok{flex:1.8;background:var(--acc);color:var(--onacc);border-color:var(--acc)}
+.gp button:disabled,.seg button:disabled{opacity:.4}
 .gp button{flex:1;height:40px;border-radius:10px;border:1px solid var(--line);background:transparent;color:var(--ink);font:700 16px var(--body)}
-.hs span{flex:1;background:rgba(255,255,255,.14);border-radius:14px;padding:9px 8px;font-size:11px}
+.hs span{flex:1;background:var(--ov,rgba(255,255,255,.14));border-radius:14px;padding:9px 8px;font-size:11px}
 .hs b{display:block;font:700 24px/1.1 var(--disp)}
 .sec{font:700 26px var(--disp);margin:6px 0 4px}
+.gr{display:flex;align-items:center;gap:10px;width:100%;text-align:left;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:14px;padding:16px;margin:10px 0 0;font:700 19px var(--disp)}
+.gr span{flex:1}
+.gr small{font:600 12px var(--body);color:var(--mute)}
+.gr svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s}
+.gr[aria-expanded=true] svg{transform:rotate(180deg)}
 .tg{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
 .tile{display:flex;flex-direction:column;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:0 0 12px;overflow:hidden;color:inherit;font:inherit}
 .tf{display:block;background:linear-gradient(160deg,var(--t1),var(--t2));padding:8px 10px 2px}
@@ -199,14 +226,15 @@ main{zoom:var(--zm,1)}
 <nav><button data-t="train"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 6.5v11M17.5 6.5v11M3.5 9v6M20.5 9v6M6.5 12h11"/></svg>Train</button><button data-t="photos"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>Photos</button><button data-t="prog"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V5M4 19h16M8 15l4-4 3 3 5-6"/></svg>Progress</button><button data-t="log"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3 2"/></svg>History</button><button data-t="settings"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.1 4.8 L10.4 1.9 L13.6 1.9 L13.9 4.8 L15.8 5.5 L18.0 3.7 L20.3 6.0 L18.5 8.2 L19.2 10.1 L22.1 10.4 L22.1 13.6 L19.2 13.9 L18.5 15.8 L20.3 18.0 L18.0 20.3 L15.8 18.5 L13.9 19.2 L13.6 22.1 L10.4 22.1 L10.1 19.2 L8.3 18.5 L6.0 20.3 L3.7 18.0 L5.5 15.8 L4.8 13.9 L1.9 13.6 L1.9 10.4 L4.8 10.1 L5.5 8.2 L3.7 6.0 L6.0 3.7 L8.2 5.5Z"/><circle cx="12" cy="12" r="3.2"/></svg>Settings</button></nav>
 <script>
 const KEY='reps.v1'; /* legacy storage name, kept so existing workouts survive the rename */
-let S={history:[],unit:'lb',active:null,goals:{},sv:{},set:{mode:'dark',color:'Blue',size:100}},rest=null,tm=null,hasUnit=false;
+let S={history:[],unit:'lb',active:null,goals:{},bw:0,sv:{},set:{mode:'color',color:'Blue',size:100,custom:{r:47,g:145,b:229}}},rest=null,tm=null,hasUnit=false;
 try{
  const r=localStorage.getItem(KEY);
  if(r){
   const p=JSON.parse(r);
   if(Array.isArray(p.history))S.history=p.history;
+  if(+p.bw>0&&+p.bw<1000)S.bw=+p.bw;
   if(p.sv&&typeof p.sv==='object')for(const k in p.sv)if(/^\d{4}-\d\d-\d\d$/.test(k)&&/^\d{4}-\d\d$/.test(p.sv[k]))S.sv[k]=p.sv[k];
-  if(p.set&&typeof p.set==='object'){const q=p.set;if(['dark','light','auto'].includes(q.mode))S.set.mode=q.mode;if(typeof q.color==='string'&&q.color.length<12)S.set.color=q.color;if([90,100,115,130].includes(+q.size))S.set.size=+q.size}
+  if(p.set&&typeof p.set==='object'){const q=p.set;if(['dark','light','color','auto'].includes(q.mode))S.set.mode=q.mode;if(typeof q.color==='string'&&q.color.length<12)S.set.color=q.color;if(q.custom&&[q.custom.r,q.custom.g,q.custom.b].every(v=>Number.isInteger(v)&&v>=0&&v<=255))S.set.custom={r:q.custom.r,g:q.custom.g,b:q.custom.b};if([90,100,115,130].includes(+q.size))S.set.size=+q.size}
   if(p.goals&&typeof p.goals==='object')for(const k in p.goals){const n=+p.goals[k];if(/^\d{4}-\d\d-\d\d$/.test(k)&&n>=1&&n<=7)S.goals[k]=Math.round(n)}
   if(p.unit==='kg'||p.unit==='lb'){S.unit=p.unit;hasUnit=true}
   const a=p.active;
@@ -220,18 +248,32 @@ try{
 }catch(e){}
 if(!hasUnit)S.unit=(S.history[S.history.length-1]||{}).u||'lb';
 const HUES={Blue:207,Indigo:238,Purple:268,Magenta:300,Pink:330,Red:355,Orange:24,Gold:42,Green:140,Teal:182,Graphite:215};
+function rgb2hsv(r,g,b){r/=255;g/=255;b/=255;const mx=Math.max(r,g,b),mn=Math.min(r,g,b),d=mx-mn;let h=0;if(d){h=mx===r?((g-b)/d+6)%6:mx===g?(b-r)/d+2:(r-g)/d+4;h*=60}return{h,s:mx?d/mx:0,v:mx}}
+function hsv2rgb(h,s,v){const f=n=>{const k=(n+h/60)%6;return v-v*s*Math.max(0,Math.min(k,4-k,1))};return[Math.round(f(5)*255),Math.round(f(3)*255),Math.round(f(1)*255)]}
+function rgb2hsl(r,g,b){r/=255;g/=255;b/=255;const mx=Math.max(r,g,b),mn=Math.min(r,g,b),d=mx-mn,l=(mx+mn)/2;let h=0;if(d){h=mx===r?((g-b)/d+6)%6:mx===g?(b-r)/d+2:(r-g)/d+4;h*=60}return{h,s:d?d/(1-Math.abs(2*l-1)):0,l}}
+function hsl2rgb(h,s,l){const a=s*Math.min(l,1-l),f=n=>{const k=(n+h/30)%12;return l-a*Math.max(-1,Math.min(k-3,9-k,1))};return[Math.round(f(0)*255),Math.round(f(8)*255),Math.round(f(4)*255)]}
+function lumRgb(r,g,b){const q=x=>{x/=255;return x<=.03928?x/12.92:Math.pow((x+.055)/1.055,2.4)};return .2126*q(r)+.7152*q(g)+.0722*q(b)}
+/* Modes: dark = blacks and grays, light = whites and grays (both use your accent color), color = the whole app tinted with your base color. */
 function applyTheme(){
- const o=S.set,h=HUES[o.color]!==undefined?HUES[o.color]:207,dk=o.mode==='dark'||(o.mode==='auto'&&matchMedia('(prefers-color-scheme: dark)').matches),sf=o.color==='Graphite'?.14:1,yl=h>=35&&h<=110?-9:0;
- const c=(sa,li,al)=>'hsl('+h+' '+Math.round(sa*sf)+'% '+li+(al?'% / '+al+')':'%)');
- const base={on:c(100,97),h0:c(88,12+yl/3),h1:c(72,37+yl),h2:c(77,54+yl),t1:c(70,34+yl),t2:c(68,44+yl)};
- const v=Object.assign(base,dk?{bg:c(77,16),card:c(73,25),ink:c(100,97),mute:c(66,79),line:c(60,41),acc:c(77,54),onacc:c(90,12),rest:c(88,10),onrest:c(100,97),hl:c(77,54,.35)}
- :{bg:c(45,95),card:c(40,100),ink:c(55,12),mute:c(25,36),line:c(30,78),acc:c(78,40+yl),onacc:'#fff',rest:c(45,88),onrest:c(55,12),hl:c(78,48,.25)});
- const r=document.documentElement.style;for(const k in v)r.setProperty('--'+k,v[k]);
- r.setProperty('color-scheme',dk?'dark':'light');r.setProperty('--zm',o.size/100);
- const m=document.querySelector('meta[name="theme-color"]');if(m)m.content=v.bg;
+ const o=S.set;let h=207,sf=1,L=54;
+ if(o.color==='Custom'&&o.custom){const q=rgb2hsl(o.custom.r,o.custom.g,o.custom.b);h=Math.round(q.h);sf=q.s/.77;L=Math.max(34,Math.min(56,q.l*100))}
+ else{h=HUES[o.color]!==undefined?HUES[o.color]:207;if(o.color==='Graphite')sf=.14;if(h>=35&&h<=110)L=45}
+ let m=o.mode;if(m==='auto')m=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';
+ const c=(sa,li,al)=>'hsl('+h+' '+Math.min(100,Math.round(sa*sf))+'% '+Math.round(li)+(al?'% / '+al+')':'%)');
+ const lt=m==='light',aL=lt?L-12:L,ac=hsl2rgb(h,Math.min(1,.77*sf),aL/100),dkText=lumRgb(ac[0],ac[1],ac[2])>.22;
+ const base={on:c(100,97),h0:c(88,12),h1:c(72,L-17),h2:c(77,L),t1:c(70,L-20),t2:c(68,L-10),acc:c(77,aL),onacc:dkText?c(90,10):'#fff',hl:c(77,aL,lt?.22:.32)};
+ const pal=m==='color'?{bg:c(77,16),card:c(73,25),ink:c(100,97),mute:c(66,79),line:c(60,41),rest:c(88,10),onrest:c(100,97)}
+ :lt?{bg:'#f4f4f6',card:'#ffffff',ink:'#111113',mute:'#66666c',line:'#d9d9de',rest:'#e7e7eb',onrest:'#111113'}
+ :{bg:'#0e0e10',card:'#1c1c1f',ink:'#f4f4f5',mute:'#a3a3a9',line:'#34343a',rest:'#060607',onrest:'#f4f4f5'};
+ if(m==='dark')Object.assign(base,{on:'#f4f4f5',h0:'#0a0a0b',h1:'#222226',h2:'#37373d',t1:'#26262b',t2:'#383840',ov:'rgba(255,255,255,.10)',ovb:'rgba(255,255,255,.22)'});
+ else if(lt)Object.assign(base,{on:'#111113',h0:'#d6d6dc',h1:'#ffffff',h2:'#e6e6eb',t1:'#f1f1f4',t2:'#dfdfe5',ov:'rgba(0,0,0,.06)',ovb:'rgba(0,0,0,.18)'});
+ else Object.assign(base,{ov:'rgba(255,255,255,.14)',ovb:'rgba(255,255,255,.28)'});
+ const v=Object.assign(base,pal),r=document.documentElement.style;for(const k in v)r.setProperty('--'+k,v[k]);
+ r.setProperty('color-scheme',lt?'light':'dark');r.setProperty('--zm',o.size/100);
+ const mt=document.querySelector('meta[name="theme-color"]');if(mt)mt.content=lt?'#f4f4f6':m==='color'?c(77,16):'#0e0e10';
 }
 try{matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>{if(S.set.mode==='auto')applyTheme()})}catch(e){}
-const save=()=>{try{localStorage.setItem(KEY,JSON.stringify({history:S.history,goals:S.goals,sv:S.sv,set:S.set,unit:S.unit,active:S.active,tm:S.active?tm:null,rest:S.active?rest:null}))}catch(e){}};
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify({history:S.history,goals:S.goals,bw:S.bw,sv:S.sv,set:S.set,unit:S.unit,active:S.active,tm:S.active?tm:null,rest:S.active?rest:null}))}catch(e){}};
 applyTheme();
 save();
 const R={
@@ -385,6 +427,45 @@ L['Zottman Curl']=A('Biceps Curl','Stand tall with dumbbells, palms facing up|Cu
 L['Cross-Body Hammer Curl']=A('Hammer Curl','Hold dumbbells at your sides, palms facing in|Curl one weight across your body toward the opposite shoulder|Lower slowly and alternate arms',{d:1});
 L['Hollow Hold']={d:0,u:'sec',r:30,p:[LY+'66 86 80 86','22 76 30 80 52 86 16 70 6 64 70 80 88 72'],c:'Lie on your back, arms stretched overhead|Lift your shoulders and legs off the floor, low back pressed down|Hold the shape, breathing steadily'};
 L['Dead Bug']={d:0,p:['12 86 24 86 52 86 26 70 26 52 58 68 72 68','12 86 24 86 52 86 16 76 6 72 68 80 86 84'],c:'Lie on your back, arms up, knees over hips|Lower one arm overhead and the opposite leg toward the floor|Return and switch sides, low back flat'};
+L['Dumbbell Fly']={d:1,p:['12 82 24 84 54 84 26 66 26 48 70 66 76 86','12 82 24 84 54 84 18 80 8 82 70 66 76 86'],c:'Lie on your back, dumbbells above your chest, palms facing in|Open your arms wide in a slow arc with elbows slightly bent|Squeeze your chest to bring them back together'};
+L['Dumbbell Pullover']={d:1,p:['12 82 24 84 54 84 26 66 26 48 70 66 76 86','12 82 24 84 54 84 10 70 3 80 70 66 76 86'],c:'Lie on your back holding one dumbbell above your chest|Lower it in an arc behind your head, arms nearly straight|Pull it back over your chest using your chest and back'};
+L['Single-Arm Dumbbell Row']=A('Bent-Over Dumbbell Row','Rest one hand on a chair or your knee, back flat|Row the dumbbell to your hip, elbow close to your body|Lower slowly and finish all reps before switching sides',{d:1});
+L['Seated Dumbbell Press']=A('Dumbbell Shoulder Press','Sit tall on a sturdy chair, dumbbells at shoulder height|Press them overhead until your arms are straight|Lower slowly to your shoulders',{d:1});
+L['Alternating Biceps Curl']=A('Biceps Curl','Stand tall with a dumbbell in each hand, palms forward|Curl one dumbbell up without swinging|Lower slowly, then curl the other arm',{d:1});
+L['Reverse Curl']=A('Biceps Curl','Hold dumbbells with palms facing down|Curl them up, keeping your wrists straight|Lower slowly',{d:1});
+L['Incline Push-Up']={d:0,p:['84 36 74 42 46 60 74 58 74 74 28 76 10 90','84 52 74 56 46 66 62 66 74 74 28 78 10 90'],c:'Hands on a sturdy chair or counter, body in one straight line|Lower your chest toward your hands|Press back up. Use a lower surface to make it harder'};
+L['Tempo Push-Up']=A('Push-Up','Hands under shoulders, body straight|Lower for a slow count of three|Press up at normal speed');
+L['Staggered Push-Up']=A('Push-Up','Place one hand a little forward of the other|Lower your chest with a straight body|Press up. Swap hand positions each set');
+L['Hand-Release Push-Up']=A('Push-Up','Lower until your chest touches the floor|Lift both hands off the floor for a moment|Place them back and press up');
+L['Negative Push-Up']=A('Push-Up','Start at the top of a push-up|Lower as slowly as you can, about five seconds|Drop to your knees to reset, then repeat');
+L['Wall Press-Up']={d:0,p:['58 22 56 32 46 58 66 40 78 38 42 76 38 92','68 26 64 36 46 58 72 46 78 38 42 76 38 92'],c:'Stand an arm\u2019s length from a wall, hands at chest height|Bend your elbows to bring your chest to the wall|Push back to the start. Step your feet back to make it harder'};
+L['Reverse Plank']={d:0,u:'sec',r:30,p:['18 50 26 54 52 62 28 70 28 88 72 70 90 88','18 54 26 58 52 70 28 74 28 88 72 76 90 88'],c:'Sit with hands behind you, fingers toward your feet|Lift your hips until your body is a straight line|Hold, looking forward, breathing steadily'};
+L['High Plank Hold']={d:0,u:'sec',r:45,p:[PUP+'26 72 10 84','82 49 72 53 41 63 72 70 72 88 26 72 10 84'],c:'Hands under shoulders, body in a straight line|Squeeze your glutes and tighten your stomach|Hold without letting your hips sag or rise'};
+L['Plank Up-Down']={d:0,p:[PUP+'26 72 10 84','82 58 72 62 41 70 72 82 82 88 26 76 10 86'],c:'Start in a high plank, hands under shoulders|Lower onto one forearm at a time|Press back up to your hands. Switch the leading arm each rep'};
+L['Walkout Plank']=A('Inchworm','Stand tall, then fold forward and place your hands on the floor|Walk your hands out to a high plank and hold for a second|Walk your hands back and stand up');
+L['Bicycle Crunch']={d:0,p:['22 76 30 80 52 86 20 70 14 74 66 72 78 82 72 86 88 86','22 76 30 80 52 86 20 70 14 74 72 86 88 86 66 72 78 82'],c:'Lie on your back, hands lightly behind your head|Bring one knee in and twist the opposite elbow toward it|Switch sides in a smooth pedaling motion'};
+L['Boat Hold']={d:0,u:'sec',r:30,p:['40 40 44 50 50 72 56 58 66 56 68 60 86 46','40 42 44 52 50 72 56 60 66 58 68 62 86 48'],c:'Sit with knees bent, lean back slightly|Lift your feet and straighten your legs into a V, arms forward|Keep your chest tall and hold'};
+L['V-Up']={d:0,p:['12 86 24 86 52 86 8 78 2 72 66 86 80 86','34 48 42 56 52 84 58 62 72 48 68 66 84 52'],c:'Lie flat, arms overhead, legs straight|Lift your legs and chest at the same time, reaching toward your toes|Lower slowly and repeat'};
+L['Cat-Cow Stretch']={d:0,r:10,p:['80 50 66 56 38 58 66 72 66 88 38 88 22 88','70 62 66 48 38 50 66 72 66 88 38 88 22 88'],c:'Start on hands and knees|Round your back toward the ceiling, chin tucked|Then drop your belly and look up. Move slowly with your breath'};
+L['Prone Y Raise']=A('Superman','Lie face down, arms stretched overhead in a Y|Lift your arms and chest slightly, squeezing your shoulder blades|Lower slowly');
+L['Dead Hang']={d:0,u:'sec',r:30,p:[HANG,'50 24 50 34 50 62 51 18 50 2 48 79 46 93'],c:'Hang from a bar with hands about shoulder-width apart|Let your shoulders stretch but keep them active|Hold, breathing steadily'};
+L['Table Row']=A('Door Row','Lie under a sturdy table and grip the edge|Pull your chest up to the table, body straight|Lower slowly. Check the table is stable first');
+L['Curtsy Lunge']=A('Reverse Lunge','Stand tall, feet hip-width apart|Step one foot back and across behind the other, sinking down|Push through the front heel to stand. Alternate sides');
+L['Goblet Lunge']=A('Reverse Lunge','Hold one dumbbell at your chest|Step back and lower until both knees are bent|Push through your front heel to stand. Alternate legs',{d:1});
+L['Lunge Pulse']=A('Reverse Lunge','Lower into a lunge and stay low|Pulse up and down a few inches|Stand after your last pulse, then switch legs');
+L['Forward Lunge']={d:0,p:[ST+HG+'48 75 46 92 54 75 56 92','52 32 52 42 50 68 50 54 50 66 62 74 62 92 40 82 28 92'],c:'Stand tall with feet together|Step forward and lower until both knees reach about 90 degrees|Push back to standing. Alternate legs'};
+L['Dumbbell Forward Lunge']=A('Forward Lunge','Hold a dumbbell in each hand at your sides|Step forward and lower your back knee toward the floor|Push back to standing. Alternate legs',{d:1});
+L['Dumbbell Sumo Deadlift']=A('Dumbbell Deadlift','Feet wide, toes turned out, a dumbbell between your legs|Push your hips back and lower with a flat back|Drive your hips forward to stand tall',{d:1});
+L['Chair Squat']=A('Bodyweight Squat','Stand in front of a chair, feet shoulder-width apart|Sit back until you lightly touch the seat|Stand up without using your hands');
+L['Pause Squat']=A('Bodyweight Squat','Squat down with your chest tall|Pause for two full seconds at the bottom|Drive up through your heels');
+L['Pulse Squat']=A('Bodyweight Squat','Lower into a squat and stay low|Pulse up and down a few inches|Stand tall after your last pulse');
+L['Standing Glute Kickback']={d:0,p:[ST+HG+'50 75 50 92 52 75 54 92','50 20 50 30 50 58 50 44 50 58 50 75 50 92 44 76 32 84'],c:'Stand tall holding a wall or chair for balance|Kick one leg straight back, squeezing your glute|Lower with control. Do each side'};
+L['Glute Bridge Hold']=A('Glute Bridge','Lie on your back, feet flat, knees bent|Lift your hips until your body is a straight line|Hold and squeeze your glutes',{u:'sec',r:30});
+L['Jump Rope Jumps']={d:0,u:'sec',r:60,p:[ST+HG+LG,'50 16 50 26 50 54 50 40 50 54 50 71 52 84'],c:'Hold imaginary rope handles at your sides|Hop lightly on the balls of your feet, turning your wrists|Stay relaxed and keep a steady rhythm'};
+L['Bear Crawl']={d:0,u:'sec',r:30,p:['78 48 66 52 38 54 66 68 66 86 42 78 28 86','82 48 70 52 42 54 70 68 74 86 36 76 20 86'],c:'Hands under shoulders, knees hovering just off the floor|Crawl forward, moving opposite hand and foot together|Keep your hips low and your back flat'};
+L['Squat Thrust']=A('Burpee','Squat down and place your hands on the floor|Jump or step your feet back to a plank|Jump your feet in and stand up. No push-up, no jump');
+L['Sprint in Place']=A('Jog or Run','Stand tall, arms bent at 90 degrees|Drive your knees up fast, pumping your arms|Stay on the balls of your feet and keep breathing',{u:'sec',r:20});
+L['Farmer Carry']={d:1,u:'sec',r:40,p:[ST+HG+'48 75 46 92 54 75 56 92',ST+HG+'48 75 40 92 54 75 60 92'],c:'Hold a heavy dumbbell in each hand at your sides|Stand tall, shoulders back, and walk with short steady steps|Do not lean. Squeeze the handles hard'};
 let shown={},picking=false;
 function fig(s,m,d){
  const p=s.split(' ').map(Number),g=i=>p.slice(2*i,2*i+2),J=a=>a.join(',');
@@ -411,6 +492,17 @@ const mixJ=(a,b,k)=>a.map((p,i)=>mid(p,b[i],k));
 const phaseAt=u=>u<.2?{k:0,n:'Start'}:u<.5?{k:ez((u-.2)/.3),n:'Move'}:u<.7?{k:1,n:'Hold'}:{k:ez(1-(u-.7)/.3),n:'Return'};
 const ln=(a,b,c,w)=>'<line x1="'+a[0]+'" y1="'+a[1]+'" x2="'+b[0]+'" y2="'+b[1]+'" stroke="'+c+'" stroke-width="'+w+'" stroke-linecap="round"/>';
 const MU=[
+[/Glute Kickback/,'glutes, hamstrings','l'],
+[/Dumbbell Fly|Pullover/,'chest, shoulders','at'],
+[/Reverse Plank/,'glutes, hamstrings, shoulders','atl'],
+[/Dead Hang/,'grip, lats, shoulders','at'],
+[/Cat-Cow/,'spine, core','t'],
+[/Farmer/,'grip, traps, core','atl'],
+[/Jump Rope|Sprint/,'calves, cardio','l'],
+[/Bear Crawl/,'full body, core','atl'],
+[/Bicycle|V-Up|Boat|Plank Up-Down|High Plank/,'core, shoulders','t'],
+[/Squat Thrust|Walkout/,'full body, core','atl'],
+[/Wall Press-Up/,'chest, triceps','at'],
 [/Upright Row/,'shoulders, traps','at'],
 [/Kickback|Skull/,'triceps','at'],
 [/Donkey/,'glutes, hamstrings','lt'],
@@ -430,8 +522,10 @@ const MU=[
 const muscles=n=>MU.find(r=>r[0].test(n))||[0,'full body','atl'];
 function equip(n){
  const G='var(--mute)';
- if(/Pull-Up|Chin-Up|Hanging/.test(n))return{l:'Pull-up bar',s:ln([28,2],[72,2],G,3)+ln([28,2],[28,93],G,1)+ln([72,2],[72,93],G,1)};
+ if(/Pull-Up|Chin-Up|Hanging|Dead Hang/.test(n))return{l:'Pull-up bar',s:ln([28,2],[72,2],G,3)+ln([28,2],[28,93],G,1)+ln([72,2],[72,93],G,1)};
+ if(/Table Row/.test(n))return{l:'Sturdy table',s:'<rect x="6" y="60" width="88" height="3" rx="1.5" fill="'+G+'"/>'+ln([10,63],[10,93],G,2)+ln([90,63],[90,93],G,2)};
  if(/Door Row/.test(n))return{l:'Door frame',s:ln([66,24],[66,93],G,3)};
+ if(/Incline Push-Up|Wall Press-Up/.test(n))return{l:/Wall/.test(n)?'Wall':'Sturdy chair or counter',s:/Wall/.test(n)?ln([80,10],[80,93],G,3):'<rect x="72" y="72" width="24" height="3" rx="1.5" fill="'+G+'"/>'+ln([74,75],[74,93],G,2)+ln([94,75],[94,93],G,2)};
  if(/Dip/.test(n))return{l:'Sturdy chair',s:'<rect x="18" y="65" width="24" height="3" rx="1.5" fill="'+G+'"/>'+ln([20,68],[20,93],G,2)+ln([40,68],[40,93],G,2)};
  if(/Step-Up/.test(n))return{l:'Step or chair',s:'<rect x="50" y="84" width="28" height="9" rx="2" fill="'+G+'"/>'};
  if(/Bulgarian/.test(n))return{l:'Chair',s:'<rect x="12" y="84" width="18" height="3" rx="1.5" fill="'+G+'"/>'+ln([14,87],[14,93],G,2)+ln([28,87],[28,93],G,2)};
@@ -512,6 +606,7 @@ function wkKey(dt){const q=new Date(dt.getFullYear(),dt.getMonth(),dt.getDate()-
 /* Week streak: each week you hit your chosen goal adds 1. Day streak: workout days in the current unbroken run of successful weeks; rest days never break it, only a missed week does. */
 function mkey(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')}
 /* Streak saves: 2 per month. When a week is missed and you had a running streak, a save is used automatically so the streak stays alive (it adds no week). */
+let pg=0,sg=null,cp=false,cpPrev=null,cpS={h:0,s:0,v:1};
 function strk(){
  const days={};S.history.forEach(w=>{const dt=new Date(w.t),k=wkKey(dt);(days[k]=days[k]||new Set()).add(dt.toDateString())});
  const now=new Date(),cur=wkKey(now),um=mkey(now),cnt=k=>days[k]?days[k].size:0,g=k=>S.goals[k]||0,ok=k=>g(k)>0&&cnt(k)>=g(k),used=()=>Object.values(S.sv).filter(v=>v===um).length;
@@ -536,7 +631,7 @@ function wkv(){
   cells+='<div class="dy'+(on?' d':'')+(i===sd?' t':'')+'"><small>'+L1[i]+'</small><i>'+(on?'\u2713':x.getDate())+'</i></div>'}
  const T=strk();
  let gl;const svl='<small>'+(T.lastSaved?'A streak save covered last week. ':'')+'Streak saves left this month: '+T.saves+' of 2.</small>';
- if(!T.goal)gl='<div class="gl"><b>New week. How many days will you work out?</b><small>Pick your goal. It locks for the week.</small>'+svl+'<div class="gp">'+[1,2,3,4,5,6,7].map(n=>'<button data-a="goal" data-n="'+n+'">'+n+'</button>').join('')+'</div></div>';
+ if(!T.goal)gl='<div class="gl"><b>New week. How many days will you work out?</b><small>Tap a number to try it, then press OK to lock it in. To change it later, use Settings.</small>'+svl+'<div class="gp">'+[1,2,3,4,5,6,7].map(n=>'<button class="'+(pg===n?'on':'')+'" data-a="gsel" data-n="'+n+'">'+n+'</button>').join('')+'<button class="ok" data-a="gok"'+(pg?'':' disabled')+'>OK</button></div></div>';
  else if(T.ok)gl='<div class="gl ok"><b>Week goal hit: '+T.n+' of '+T.goal+' days</b><small>This week is counted in your week streak.</small>'+svl+'</div>';
  else{const need=T.goal-T.n;gl='<div class="gl"><b>Goal: '+T.goal+' days this week. '+T.n+' done, '+need+' to go.</b><small>'+(need>T.left?'Not enough days left to make it this week.':T.left+(T.left===1?' day':' days')+' left including today.')+'</small></div>'}
  return '<header class="hero"><div class="hl">'+now.toLocaleDateString(undefined,{weekday:'long',month:'long',day:'numeric'})+'</div><h1>Let\u2019s get after it</h1><div class="wk">'+cells+'</div><div class="hs"><span><b>'+wn+(T.goal?'/'+T.goal:'')+'</b>this week</span><span><b>'+T.ws+'</b>week streak</span><span><b>'+T.ds+'</b>day streak</span><span><b>'+h.length+'</b>total</span></div></header>'+gl;
@@ -545,23 +640,44 @@ function tile(k){
  const e=R[k],x=L[e[0][0]],p=x&&x.p[x.p.length-1];
  return '<button class="tile" data-a="start" data-n="'+esc(k)+'"><span class="tf">'+(p?fig(p,x.m,x.d):'')+'</span><span class="tn">'+esc(k)+'</span><span class="tl3">'+e.length+' exercises \u00b7 '+e.reduce((n,q)=>n+q[1],0)+' sets</span></button>';
 }
+const GROUPS=[['up','Upper body',['Push','Pull','Arms and shoulders','Upper body','Chest and triceps','Back and biceps','Shoulders','Arm burner','Posture and back']],['low','Lower body',['Legs','Glutes','Legs and glutes','Glute and leg burner']],['core','Core',['Core','Abs and core','Core burner']],['full','Full body',['Full body','Bodyweight only','Dumbbell only','Cardio burn','Beginner','HIIT','Quick 15','Dumbbell full body 2','Cardio blast']],['xt','Extreme',['Upper Body Extreme 1','Upper Body Extreme 2','Upper Body Extreme 3','Lower Body Extreme 1','Lower Body Extreme 2','Lower Body Extreme 3','Core Extreme','Conditioning Extreme']]];
+let gopen={},lastVK='',hiddenAt=0;
+function grp(){
+ const placed=new Set(GROUPS.flatMap(g=>g[2])),rest=Object.keys(R).filter(k=>!k.startsWith('Vergil')&&!placed.has(k));
+ return GROUPS.map((g,gi)=>{const ks=g[2].filter(k=>R[k]).concat(g[0]==='full'?rest:[]),open=!!gopen[g[0]];
+  return '<button class="gr" data-a="gtog" data-g="'+g[0]+'" aria-expanded="'+open+'"><span>'+g[1]+'</span><small>'+ks.length+' workouts</small><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>'+
+  (open?(g[0]==='xt'?'<p class="vn">Very hard. Warm up first, rest fully between sets, and stop if your form breaks. Needs a pull-up bar, two sturdy chairs and a wall.</p>':'')+'<div class="tg">'+ks.map(tile).join('')+'</div>':'')}).join('');
+}
+function toTop(){try{window.scrollTo(0,0);document.documentElement.scrollTop=0;document.body.scrollTop=0}catch(e){}}
+function resetHome(){tab='train';viewing=sel=null;picking=false;gopen={};vopen=false;cp=false;cpPrev=null;render();toTop()}
 function homeBase(){
  return wkv()+(phReady&&due()?'<button class="rem" data-a="gophotos">Monthly photo due. Tap to take it.</button>':'')+
- '<h2 class="sec">Workouts</h2><p class="vn">Dumbbells and bodyweight only. Weights fill in from your last session.</p><div class="tg">'+
- Object.keys(R).filter(k=>!k.startsWith('Vergil')&&!/Extreme/.test(k)).map(tile).join('')+'</div>'+
- '<h2 class="sec">Extreme</h2><p class="vn">Very, very hard upper and lower body sessions. Warm up first, rest fully between sets, and stop if form breaks. You need a pull-up bar, two sturdy chairs and a wall.</p><div class="tg">'+
- Object.keys(R).filter(k=>/Extreme/.test(k)).map(tile).join('')+'</div>';
+ '<h2 class="sec">Workouts</h2><p class="vn">Dumbbells and bodyweight only. Weights fill in from your last session. Tap a body area to open it.</p>'+grp();
+}
+const musOf=n=>{const m=MU.find(x=>x[0].test(n));return m?m[1]:''};
+const PLUS='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>';
+const KGLB=2.20462;
+const isBW=n=>{const x=L[n];return !!x&&!x.d&&x.u!=='sec'&&x.u!=='min'};
+const bwShow=()=>S.bw?Math.round((S.unit==='kg'?S.bw:S.bw*KGLB)*10)/10:0;
+/* Bodyweight exercises count your body weight plus any weight you add. Dumbbell exercises count only the weight you type. Timed holds count nothing. */
+function setLoad(n,s,u,bwKg){const x=L[n]||{};if(x.u==='sec'||x.u==='min')return 0;const add=+s.w||0;return isBW(n)&&bwKg?add+(u==='kg'?bwKg:bwKg*KGLB):add}
+function wVol(w){const bw=w.bw!==undefined?w.bw:S.bw;return w.ex.reduce((n,e)=>n+e.sets.reduce((m,s)=>m+setLoad(e.n,s,w.u||S.unit,bw)*(+s.r||0),0),0)}
+function liveVol(){const a=S.active;return a?a.ex.reduce((n,e)=>n+e.sets.reduce((m,s)=>m+(s.d?setLoad(e.n,s,S.unit,S.bw)*(+s.r||0):0),0),0):0}
+const bwnote=n=>isBW(n)?'<p class="bwn">'+(S.bw?'Counts your body weight ('+bwShow()+' '+S.unit+') plus any weight you add.':'Set your body weight in Settings to count it. Weight you type is added on top.')+'</p>':'';
+function addbar(top){
+ if(!top)return picking?'':'<button class="addbig" data-a="pick">'+PLUS+'Add exercise</button>';
+ return '<button class="addbig" data-a="pick">'+PLUS+(picking?'Close exercise list':'Add exercise')+'</button>'+(picking?'<div class="pk"><input id="ps" class="ps" type="search" placeholder="Search '+Object.keys(L).length+' exercises" aria-label="Search exercises" autocomplete="off" autocapitalize="off" spellcheck="false"><div class="pl">'+Object.keys(L).sort().map(k=>'<button data-a="pickx" data-n="'+esc(k)+'" data-q="'+esc((k+' '+musOf(k)).toLowerCase())+'">'+esc(k)+'<small>'+(L[k].d?'dumbbell':'bodyweight')+(musOf(k)?' \u00b7 '+esc(musOf(k)):'')+'</small></button>').join('')+'<p class="vn" id="pn" hidden>No match. Type your own below.</p></div><div class="addx"><input id="nx" type="text" placeholder="Or type your own" aria-label="Exercise name"><button data-a="addx">Add</button></div></div>':'');
 }
 function active(){
  const a=S.active;
- return '<h1>'+esc(a.name)+'</h1><p class="sub"><span id="el">0:00</span> elapsed</p>'+
- a.ex.map((e,i)=>'<section class="ex"><h2>'+esc(e.n)+'</h2>'+guide(e.n)+tbtn(e.n,i)+e.sets.map((s,j)=>
+ return '<h1>'+esc(a.name)+'</h1><p class="sub"><span id="el">0:00</span> elapsed · <span id="lv">'+Math.round(liveVol()).toLocaleString()+'</span> '+S.unit+' lifted</p>'+addbar(true)+
+ a.ex.map((e,i)=>'<section class="ex"><h2>'+esc(e.n)+'</h2>'+guide(e.n)+tbtn(e.n,i)+bwnote(e.n)+e.sets.map((s,j)=>
   '<div class="set'+(s.d?' d':'')+'"><span class="si">'+(j+1)+'</span>'+
-  '<label><input type="number" inputmode="decimal" data-f="w" data-i="'+i+'" data-j="'+j+'" value="'+esc(s.w)+'" placeholder="'+((L[e.n]||{}).d===0?'BW':'0')+'" aria-label="Weight"><small>'+S.unit+'</small></label>'+
+  '<label><input type="number" inputmode="decimal" data-f="w" data-i="'+i+'" data-j="'+j+'" value="'+esc(s.w)+'" placeholder="'+((L[e.n]&&!L[e.n].d)?(isBW(e.n)?'+0':'BW'):'0')+'" aria-label="Weight"><small>'+S.unit+'</small></label>'+
   '<label><input type="number" inputmode="numeric" data-f="r" data-i="'+i+'" data-j="'+j+'" value="'+esc(s.r)+'" aria-label="Repetitions"><small>'+((L[e.n]||{}).u||'reps')+'</small></label>'+
   '<button class="ck" data-a="ck" data-i="'+i+'" data-j="'+j+'" aria-label="Mark set '+(j+1)+' done">✓</button></div>').join('')+
   '<button class="lnk" data-a="add" data-i="'+i+'">Add set</button><button class="lnk" data-a="rmset" data-i="'+i+'">Remove set</button><button class="lnk" data-a="rmex" data-i="'+i+'">Remove exercise</button></section>').join('')+
- '<button class="lnk" data-a="pick">'+(picking?'Close exercise list':'Add exercise')+'</button>'+(picking?'<div class="pl">'+Object.keys(L).sort().map(k=>'<button data-a="pickx" data-n="'+esc(k)+'">'+esc(k)+'<small>'+(L[k].d?'dumbbell':'bodyweight')+'</small></button>').join('')+'</div><div class="addx"><input id="nx" type="text" placeholder="Or type your own" aria-label="Exercise name"><button data-a="addx">Add</button></div>':'')+
+ addbar(false)+
  '<button class="main" data-a="fin">Finish workout</button><button class="lnk" data-a="disc">Discard workout</button>';
 }
 const b2d=b=>new Promise((ok,no)=>{const r=new FileReader();r.onload=()=>ok(r.result);r.onerror=()=>no(r.error);r.readAsDataURL(b)});
@@ -573,7 +689,7 @@ async function doExport(){
  setM('Preparing backup\u2026');
  try{
   const photos=[];for(const p of PH)photos.push({id:p.id,t:p.t,d:await b2d(p.b)});
-  const blob=new Blob([JSON.stringify({app:'v-training',v:1,at:Date.now(),unit:S.unit,history:S.history,goals:S.goals,sv:S.sv,photos})],{type:'application/json'});
+  const blob=new Blob([JSON.stringify({app:'v-training',v:1,at:Date.now(),unit:S.unit,history:S.history,goals:S.goals,bw:S.bw,sv:S.sv,photos})],{type:'application/json'});
   const name='v-training-backup-'+new Date().toISOString().slice(0,10)+'.json',f=new File([blob],name,{type:'application/json'});
   if(navigator.canShare&&navigator.canShare({files:[f]})){
    try{await navigator.share({files:[f],title:'V training backup'});setM('Backup ready. Choose Save to Files to keep it.');return}
@@ -591,6 +707,7 @@ async function doImport(f){
   const had=S.history.length,have=new Set(S.history.map(w=>w.t));let a=0,p=0;
   j.history.forEach(w=>{if(w&&w.t&&w.name&&Array.isArray(w.ex)&&!have.has(w.t)){S.history.push(w);have.add(w.t);a++}});
   S.history.sort((x,y)=>x.t-y.t);
+  if(+j.bw>0&&+j.bw<1000&&!S.bw)S.bw=+j.bw;
   if(j.sv&&typeof j.sv==='object')for(const k in j.sv)if(/^\d{4}-\d\d-\d\d$/.test(k)&&/^\d{4}-\d\d$/.test(j.sv[k])&&!S.sv[k])S.sv[k]=j.sv[k];
   if(j.goals&&typeof j.goals==='object')for(const k in j.goals){const n=+j.goals[k];if(/^\d{4}-\d\d-\d\d$/.test(k)&&n>=1&&n<=7&&!S.goals[k])S.goals[k]=Math.round(n)}
   if(!had&&(j.unit==='kg'||j.unit==='lb'))S.unit=j.unit;
@@ -608,26 +725,66 @@ function setv(){
  const o=S.set,T=strk(),seg=(a,arr,cur)=>'<div class="seg">'+arr.map(x=>'<button class="'+(String(cur)===String(x[0])?'on':'')+'" data-a="'+a+'" data-v="'+x[0]+'">'+x[1]+'</button>').join('')+'</div>';
  const mo=Object.values(S.sv).filter(v=>v===mkey(new Date())).length;
  return '<h1>Settings</h1><p class="sub">Make it yours.</p><h2 class="sec">Appearance</h2>'+
- '<div class="sc"><b>Mode</b>'+seg('smode',[['dark','Dark'],['light','Light'],['auto','Match phone']],o.mode)+'</div>'+
- '<div class="sc"><b>Base color</b><div class="sw">'+Object.keys(HUES).map(n=>'<button class="'+(o.color===n?'on':'')+'" data-a="scolor" data-v="'+n+'" aria-label="'+n+'" style="background:hsl('+HUES[n]+' '+(n==='Graphite'?12:75)+'% 50%)"></button>').join('')+'</div><small>'+esc(o.color)+'</small></div>'+
+ '<div class="sc"><b>Mode</b>'+seg('smode',[['dark','Dark'],['light','Light'],['color','Color'],['auto','Auto']],o.mode)+'<small>Dark is black and gray, Light is white and gray, Color tints the whole app with your base color, Auto follows your phone.</small></div>'+
+ (o.mode==='color'?'<div class="sc"><b>Base color</b><div class="sw">'+Object.keys(HUES).map(n=>'<button class="'+(o.color===n?'on':'')+'" data-a="scolor" data-v="'+n+'" aria-label="'+n+'" style="background:hsl('+HUES[n]+' '+(n==='Graphite'?12:75)+'% 50%)"></button>').join('')+'<button class="cus'+(o.color==='Custom'?' on':'')+'" data-a="cpop" aria-label="Custom color" style="'+(o.color==='Custom'&&o.custom?'background:rgb('+o.custom.r+','+o.custom.g+','+o.custom.b+');color:'+(lumRgb(o.custom.r,o.custom.g,o.custom.b)>.4?'#000':'#fff'):'')+'"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div><small id="cname">'+(o.color==='Custom'?'Custom':esc(o.color))+'</small>'+(cp?cpHTML():'')+'</div>'
+ :'<div class="sc"><b>Accent color</b><small>Dark and Light use your accent color ('+(o.color==='Custom'?'Custom':esc(o.color))+') for buttons and highlights. Switch to Color mode to change it or tint the whole app.</small></div>')+
  '<div class="sc"><b>Text size</b>'+seg('ssize',[[90,'Small'],[100,'Default'],[115,'Large'],[130,'Huge']],o.size)+'<small>Scales text and buttons together.</small></div>'+
+ '<h2 class="sec">Body weight</h2><div class="sc"><b>'+(S.bw?bwShow()+' '+S.unit:'Not set')+'</b><div class="cpr"><input type="number" class="hx" id="bwi" data-bw="1" inputmode="decimal" min="0" max="999" step="0.1" placeholder="Your body weight" value="'+(S.bw?bwShow():'')+'" aria-label="Body weight"><span style="width:auto;color:var(--ink)">'+S.unit+'</span></div><div class="seg" style="margin-top:10px"><button data-a="unit" data-u="lb" class="'+(S.unit==='lb'?'on':'')+'">lb</button><button data-a="unit" data-u="kg" class="'+(S.unit==='kg'?'on':'')+'">kg</button></div><small>Used for every bodyweight exercise, like push-ups, squats and pull-ups. Each rep counts your body weight plus any weight you add, so a push-up with 25 added counts as your body weight + 25. Dumbbell exercises count only the weight you enter, and timed holds like planks are not counted. Stays on this phone.</small></div>'+
+ '<h2 class="sec">Streak goal</h2><div class="sc"><b>'+(T.goal?'This week: '+T.goal+(T.goal===1?' day':' days')+' a week':'No goal set for this week yet')+'</b><div class="seg">'+[1,2,3,4,5,6,7].map(n=>'<button class="'+((sg||T.goal)===n?'on':'')+'" data-a="sgsel" data-n="'+n+'">'+n+'</button>').join('')+'</div><div class="seg" style="margin-top:8px"><button class="'+((sg||T.goal)===7?'on':'')+'" data-a="sgsel" data-n="7">Every day</button><button class="okb" data-a="sgok"'+((sg&&sg!==T.goal)||(!T.goal&&sg)?'':' disabled')+'>OK</button></div><small>Days you will work out each week. A week counts toward your week streak when you hit it, and your day streak only breaks when a week is missed. Changing it here updates this week only.</small></div>'+
  '<h2 class="sec">Streak saves</h2><div class="sc"><b>'+T.saves+' of 2 saves left this month</b><small>You get 2 per month. When you miss a week\u2019s goal and you had a streak going, a save is used automatically so your streak stays alive. A save keeps the streak but does not add a week. Saves reset on the 1st of the month. '+mo+' used so far this month.</small></div>'+
  '<div class="sc"><b>Version</b><small>Version '+APP_VERSION+'</small></div>';
 }
+function cpHTML(){
+ const c=S.set.custom||{r:47,g:145,b:229},rg=(k,l)=>'<div class="cpr"><span>'+l+'</span><input type="range" min="0" max="255" data-cp="'+k+'" value="'+c[k]+'" aria-label="'+l+'"><output data-o="'+k+'">'+c[k]+'</output></div>';
+ return '<div class="cp"><div class="cpw"><canvas id="cw" width="440" height="440" aria-label="Color wheel"></canvas><div id="cwv"></div><i id="cwm"></i></div>'+
+ '<div class="cpr"><span>Bright</span><input type="range" min="0" max="100" data-cp="v" value="'+Math.round(cpS.v*100)+'" aria-label="Brightness"><output></output></div>'+rg('r','Red')+rg('g','Green')+rg('b','Blue')+
+ '<div class="cpr"><span>Hex</span><input type="text" class="hx" data-cp="hex" maxlength="7" value="" aria-label="Hex color" autocapitalize="off" autocomplete="off" spellcheck="false"></div>'+
+ '<div class="seg" style="margin-top:12px"><button data-a="cpcancel">Cancel</button><button class="okb" data-a="cpdone">Done</button></div><small>The whole app changes as you move, so you can see exactly how it will look.</small></div>';
+}
+function cpInit(){
+ const c=$('#cw');if(!c)return;const x=c.getContext('2d'),W=c.width,R=W/2,im=x.createImageData(W,W),d=im.data;
+ for(let j=0;j<W;j++)for(let i=0;i<W;i++){const dx=i+.5-R,dy=j+.5-R,r=Math.hypot(dx,dy);if(r>R)continue;const q=hsv2rgb((Math.atan2(dy,dx)*180/Math.PI+360)%360,r/R,1),p=(j*W+i)*4;d[p]=q[0];d[p+1]=q[1];d[p+2]=q[2];d[p+3]=255}
+ x.putImageData(im,0,0);
+ let down=false;const mv=e=>{const b=c.getBoundingClientRect(),nx=(e.clientX-b.left)/b.width*2-1,ny=(e.clientY-b.top)/b.height*2-1;cpS.h=(Math.atan2(ny,nx)*180/Math.PI+360)%360;cpS.s=Math.min(1,Math.hypot(nx,ny));cpApply()};
+ c.addEventListener('pointerdown',e=>{down=true;try{c.setPointerCapture(e.pointerId)}catch(_){}mv(e);e.preventDefault()});
+ c.addEventListener('pointermove',e=>{if(down)mv(e)});
+ const up=()=>{if(down){down=false;save()}};c.addEventListener('pointerup',up);c.addEventListener('pointercancel',up);
+ cpSync();
+}
+function cpApply(){const q=hsv2rgb(cpS.h,cpS.s,cpS.v);S.set.color='Custom';S.set.custom={r:q[0],g:q[1],b:q[2]};applyTheme();cpSync()}
+function cpSync(){
+ const o=S.set.custom;if(!o)return;const $$=t=>document.querySelector(t);
+ ['r','g','b'].forEach(k=>{const i=$$('[data-cp='+k+']');if(i)i.value=o[k];const u=$$('[data-o='+k+']');if(u)u.textContent=o[k]});
+ const v=$$('[data-cp=v]');if(v){v.value=Math.round(cpS.v*100);if(v.nextElementSibling)v.nextElementSibling.textContent=Math.round(cpS.v*100)}
+ const mk=$$('#cwm');if(mk){mk.style.left=(50+cpS.s*Math.cos(cpS.h*Math.PI/180)*50)+'%';mk.style.top=(50+cpS.s*Math.sin(cpS.h*Math.PI/180)*50)+'%'}
+ const ov=$$('#cwv');if(ov)ov.style.opacity=1-cpS.v;
+ const hx=$$('[data-cp=hex]');if(hx&&document.activeElement!==hx)hx.value='#'+[o.r,o.g,o.b].map(n=>n.toString(16).padStart(2,'0')).join('');
+ const cu=$$('.sw .cus');if(cu){cu.classList.add('on');cu.style.background='rgb('+o.r+','+o.g+','+o.b+')';cu.style.color=lumRgb(o.r,o.g,o.b)>.4?'#000':'#fff'}
+ document.querySelectorAll('.sw [data-a=scolor]').forEach(b=>b.classList.remove('on'));const nm=$$('#cname');if(nm)nm.textContent='Custom';
+}
+document.addEventListener('input',e=>{const t=e.target,k=t.dataset&&t.dataset.cp;if(!k||!S.set.custom)return;
+ if(k==='v'){cpS.v=+t.value/100;cpApply();return}
+ let c=null;
+ if(k==='r'||k==='g'||k==='b'){c=Object.assign({},S.set.custom);c[k]=Math.max(0,Math.min(255,+t.value|0))}
+ else if(k==='hex'){const m=/^#?([0-9a-f]{6})$/i.exec(t.value.trim());if(m){const n=parseInt(m[1],16);c={r:n>>16,g:(n>>8)&255,b:n&255}}}
+ if(c){const q=rgb2hsv(c.r,c.g,c.b);cpS={h:q.s?q.h:cpS.h,s:q.s,v:q.v};S.set.custom=c;S.set.color='Custom';applyTheme();cpSync()}
+});
+document.addEventListener('change',e=>{if(e.target.dataset&&e.target.dataset.cp)save();if(e.target.dataset&&e.target.dataset.bw){const v=parseFloat(e.target.value);S.bw=v>0&&v<1000?(S.unit==='kg'?v:v/KGLB):0;save();render()}});
+document.addEventListener('input',e=>{if(e.target.id!=='ps')return;const q=e.target.value.trim().toLowerCase();let n=0;document.querySelectorAll('.pl [data-a=pickx]').forEach(b=>{const on=!q||b.dataset.q.includes(q);b.hidden=!on;if(on)n++});const m=$('#pn');if(m)m.hidden=n>0});
 function logv(){
  const h=S.history;
  const items=h.map((w,i)=>{
   const sets=w.ex.reduce((n,e)=>n+e.sets.length,0);
-  const vol=w.ex.reduce((n,e)=>n+e.sets.reduce((m,s)=>m+(+s.w||0)*(+s.r||0),0),0);
+  const vol=wVol(w);
   return '<article class="hw"><div class="hh"><b>'+esc(w.name)+'</b><span>'+new Date(w.t).toLocaleDateString(undefined,{weekday:'short',month:'short',day:'numeric'})+'</span></div>'+
   '<div class="st"><span><b>'+fmt((w.end-w.t)/1000)+'</b>time</span><span><b>'+sets+'</b>sets</span><span><b>'+Math.round(vol).toLocaleString()+'</b>'+w.u+' lifted</span></div>'+
-  '<ul>'+w.ex.map(e=>'<li>'+esc(e.n)+'<span>'+e.sets.map(s=>(s.w||0)+'×'+s.r).join('  ')+'</span></li>').join('')+'</ul>'+
+  '<ul>'+w.ex.map(e=>'<li>'+esc(e.n)+'<span>'+e.sets.map(s=>{const u=(L[e.n]||{}).u;return u==='sec'||u==='min'?s.r+(u==='min'?' min':' sec'):(isBW(e.n)?(s.w?'BW+'+s.w:'BW'):(s.w||0))+'×'+s.r}).join('  ')+'</span></li>').join('')+'</ul>'+
   '<button class="lnk" data-a="del" data-i="'+i+'">Delete</button></article>';
  }).reverse().join('');
  return '<h1>History</h1><div class="seg">Weight unit <button data-a="unit" data-u="lb" class="'+(S.unit==='lb'?'on':'')+'">lb</button><button data-a="unit" data-u="kg" class="'+(S.unit==='kg'?'on':'')+'">kg</button></div>'+backupv()+
  (items||'<p class="empty">No workouts yet. Finish a session on the Train tab and it will show up here.</p>');
 }
-const APP_VERSION='0.00.02';
+const APP_VERSION='0.00.03';
 function render(){
  armed=null;
  $('#app').className=tab==='train'&&!S.active?'h':'';
@@ -635,6 +792,8 @@ function render(){
  wakeSync();
  $('#app').innerHTML=tab==='train'?(S.active?active():home()):tab==='photos'?photov():tab==='prog'?progv():tab==='insp'?inspv():tab==='reward'?rewardv():tab==='settings'?setv():logv()+'<button class="lnk" data-a="wipe">Erase all data</button>';
  tick();
+ if(tab==='settings'&&cp)cpInit();
+ const vk=tab+'|'+(S.active?S.active.name:'')+'|'+(picking?1:0)+'|'+(viewing==null?'':viewing);if(vk!==lastVK){lastVK=vk;toTop()}
 }
 async function wakeSync(){
  try{
@@ -645,6 +804,7 @@ async function wakeSync(){
 }
 function tick(){
  const el=$('#el');if(el&&S.active)el.textContent=fmt((Date.now()-S.active.t)/1000);
+ const lv=$('#lv');if(lv&&S.active)lv.textContent=Math.round(liveVol()).toLocaleString();
  const r=$('#rest'),t=$('#tm'),on=tab==='train'&&S.active;
  if(rest&&Date.now()>=rest)rest=null;
  if(tm&&!tm.paused&&Date.now()>=tm.end){
@@ -673,16 +833,16 @@ document.addEventListener('click',e=>{
    save();render();break}
   case 'add':{const ex=a.ex[d.i],p=ex.sets[ex.sets.length-1]||{w:'',r:8};ex.sets.push({w:p.w,r:p.r,d:0});save();render();break}
   case 'pick':picking=!picking;render();break;
-  case 'pickx':a.ex.push(mk(d.n,3,(L[d.n]||{}).r||8));picking=false;save();render();break;
+  case 'pickx':a.ex.push(mk(d.n,3,(L[d.n]||{}).r||8));picking=false;save();render();setTimeout(()=>{const x=document.querySelectorAll('section.ex');if(x.length)x[x.length-1].scrollIntoView({behavior:'smooth',block:'start'})},60);break;
   case 'rmset':{const ex=a.ex[d.i];if(ex.sets.length>1)ex.sets.pop();save();render();break}
   case 'rmex':
    if(armed!==b){armed=b;b.textContent='Tap again to remove';return}
    a.ex.splice(+d.i,1);save();render();break;
-  case 'addx':{const n=$('#nx').value.trim();if(n){a.ex.push(mk(n,3,(L[n]||{}).r||8));picking=false;save();render()}break}
+  case 'addx':{const n=$('#nx').value.trim();if(n){a.ex.push(mk(n,3,(L[n]||{}).r||8));picking=false;save();render();setTimeout(()=>{const x=document.querySelectorAll('section.ex');if(x.length)x[x.length-1].scrollIntoView({behavior:'smooth',block:'start'})},60)}break}
   case 'fin':{
    const ex=a.ex.map(x=>({n:x.n,sets:x.sets.filter(s=>s.d).map(s=>({w:s.w,r:s.r}))})).filter(x=>x.sets.length);
    if(!ex.length){b.textContent='Check off at least one set first';return}
-   S.history.push({name:a.name,t:a.t,end:Date.now(),u:S.unit,ex});
+   S.history.push({name:a.name,t:a.t,end:Date.now(),u:S.unit,bw:S.bw||0,ex});
    rw=a.name.startsWith('Vergil')&&VI.length?Math.floor(Math.random()*VI.length):null;S.active=null;rest=null;tm=null;tab=rw===null?'log':'reward';save();render();break}
   case 'disc':
    if(armed!==b){armed=b;b.textContent='Tap again to discard';return}
@@ -694,6 +854,7 @@ document.addEventListener('click',e=>{
   case 'guide':shown[d.n]=!shown[d.n];render();break;
   case 'gophotos':tab='photos';render();break;
   case 'vtog':vopen=!vopen;render();break;
+  case 'gtog':gopen[d.g]=!gopen[d.g];render();break;
   case 'tstart':{
    const ex=a.ex[d.i],j=ex.sets.findIndex(s=>!s.d);if(j<0)break;
    const sec=Math.max(1,+ex.sets[j].r||30)*((L[ex.n]||{}).u==='min'?60:1);
@@ -712,16 +873,25 @@ document.addEventListener('click',e=>{
    }break;
   case 'pum':if(pu&&pu.n>0){pu.n--;$('#pcn').textContent=pu.n}break;
   case 'pup':if(pu){pu.n++;$('#pcn').textContent=pu.n}break;
-  case 'goal':{const k=wkKey(new Date());if(!S.goals[k]&&+d.n>=1&&+d.n<=7){S.goals[k]=+d.n;save();render()}break}
-  case 'smode':if(['dark','light','auto'].includes(d.v)){S.set.mode=d.v;save();applyTheme();render()}break;
-  case 'scolor':if(HUES[d.v]!==undefined){S.set.color=d.v;save();applyTheme();render()}break;
+  case 'gsel':pg=+d.n;render();break;
+  case 'gok':{const k=wkKey(new Date());if(pg>=1&&pg<=7&&!S.goals[k]){S.goals[k]=pg;pg=0;save();render()}break}
+  case 'sgsel':sg=+d.n;render();break;
+  case 'sgok':{const k=wkKey(new Date()),v=sg||S.goals[k]||0;if(v>=1&&v<=7){S.goals[k]=v;sg=null;save();render()}break}
+  case 'smode':if(['dark','light','color','auto'].includes(d.v)){S.set.mode=d.v;cp=false;cpPrev=null;save();applyTheme();render()}break;
+  case 'scolor':if(HUES[d.v]!==undefined){S.set.color=d.v;cp=false;cpPrev=null;save();applyTheme();render()}break;
+  case 'cpop':{if(cp){cp=false;cpPrev=null;save();render();break}
+   cpPrev={color:S.set.color,custom:S.set.custom?Object.assign({},S.set.custom):null};
+   if(S.set.color!=='Custom'){const h=HUES[S.set.color]!==undefined?HUES[S.set.color]:207,a=hsl2rgb(h,S.set.color==='Graphite'?.12:.75,.5);S.set.custom={r:a[0],g:a[1],b:a[2]}}
+   const q=rgb2hsv(S.set.custom.r,S.set.custom.g,S.set.custom.b);cpS={h:q.h,s:q.s,v:q.v};S.set.color='Custom';cp=true;applyTheme();render();break}
+  case 'cpdone':cp=false;cpPrev=null;save();render();break;
+  case 'cpcancel':if(cpPrev){S.set.color=cpPrev.color;if(cpPrev.custom)S.set.custom=cpPrev.custom}cp=false;cpPrev=null;applyTheme();save();render();break;
   case 'ssize':if([90,100,115,130].includes(+d.v)){S.set.size=+d.v;save();applyTheme();render()}break;
   case 'insp':tab='insp';render();break;
   case 'gotrain':tab='train';render();break;
   case 'rwdone':rw=null;tab='log';render();break;
   case 'wipe':
    if(armed!==b){armed=b;b.textContent='Tap again to erase everything';return}
-   S.history=[];S.goals={};S.sv={};S.set={mode:'dark',color:'Blue',size:100};applyTheme();PH=[];S.unit='lb';S.active=null;rest=null;tm=null;try{localStorage.removeItem(KEY)}catch(e){}tx('readwrite',s=>s.clear()).catch(()=>{});render();break;
+   S.history=[];S.goals={};S.bw=0;S.sv={};S.set={mode:'color',color:'Blue',size:100,custom:{r:47,g:145,b:229}};cp=false;applyTheme();PH=[];S.unit='lb';S.active=null;rest=null;tm=null;try{localStorage.removeItem(KEY)}catch(e){}tx('readwrite',s=>s.clear()).catch(()=>{});render();break;
   case 'cam':openCam();break;
   case 'shot':snap();break;
   case 'flip':face=face==='user'?'environment':'user';showCam('');startStream();break;
@@ -840,7 +1010,7 @@ function progv(){
  const h=S.history,now=Date.now(),W=6048e5;
  if(!h.length)return '<h1>Progress</h1><p class="empty">Finish a workout and your progress will show up here.</p>';
  const sets=h.reduce((n,w)=>n+w.ex.reduce((m,e)=>m+e.sets.length,0),0);
- const vol=h.reduce((n,w)=>n+w.ex.reduce((m,e)=>m+e.sets.reduce((k,s)=>k+(+s.w||0)*(+s.r||0),0),0),0);
+ const vol=h.reduce((n,w)=>n+wVol(w)*((w.u||S.unit)===S.unit?1:(S.unit==='kg'?1/KGLB:KGLB)),0);
  const bars=Array.from({length:8},(_,i)=>h.filter(w=>{const a=now-w.t;return a>=(7-i)*W&&a<(8-i)*W}).length),mx=Math.max(1,...bars);
  const names=[...new Set(h.flatMap(w=>w.ex.map(e=>e.n)))].sort();
  if(!names.includes(pe))pe=names[0];
@@ -855,10 +1025,12 @@ function progv(){
  '<div class="cht"><svg viewBox="0 0 300 110" role="img" aria-label="Progress chart for '+esc(pe)+'"><polyline points="'+xy.map(q=>q.join(',')).join(' ')+'" fill="none" stroke="var(--acc)" stroke-width="3" stroke-linejoin="round"/>'+xy.map(q=>'<circle cx="'+q[0]+'" cy="'+q[1]+'" r="4" fill="var(--acc)"/>').join('')+'</svg></div>'+
  '<p class="sub">'+pts.length+' session'+(pts.length>1?'s':'')+'. First: '+pts[0]+' '+unit+'. Latest: '+pts[pts.length-1]+' '+unit+(pts.length>1?' ('+(d>=0?'+':'')+d+')':'')+'.</p>';
 }
-document.addEventListener('visibilitychange',()=>{document.body.classList.toggle('cover',document.hidden);if(document.hidden&&stream)closeCam();wakeSync()});
+document.addEventListener('visibilitychange',()=>{document.body.classList.toggle('cover',document.hidden);if(document.hidden){hiddenAt=Date.now();if(stream)closeCam()}else if(hiddenAt&&Date.now()-hiddenAt>60000&&!S.active&&!pu&&!stream)resetHome();wakeSync()});
+addEventListener('pageshow',e=>{if(e.persisted)resetHome()});
 addEventListener('pagehide',save);
 let pu=null,camDeny=false,vopen=false,ac=null,wl=null;
-const cvs=document.createElement('canvas');cvs.width=64;cvs.height=48;
+const GW=96,GH=72,GN=GW*GH,PU_DEEP=.74,PU_UP=.93,PU_START=.88,PU_DEV=.09,PU_OFF=.035;
+const cvs=document.createElement('canvas');cvs.width=GW;cvs.height=GH;
 function beepInit(){try{ac=ac||new (window.AudioContext||window.webkitAudioContext)();if(ac.resume)ac.resume()}catch(e){}}
 function beep(){try{if(!ac)return;const o=ac.createOscillator();o.connect(ac.destination);o.frequency.value=880;o.start();o.stop(ac.currentTime+.3)}catch(e){}}
 function say(t){try{speechSynthesis.cancel();speechSynthesis.speak(new SpeechSynthesisUtterance(t))}catch(e){}}
@@ -871,67 +1043,106 @@ async function puStart(i){
  if(!(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia)){showCam(BLOCK);return}
  try{const q=await navigator.permissions.query({name:'camera'});if(q.state==='denied'){showCam(BLOCK);return}}catch(e){}
  face='user';
- pu={i,ph:'ready',n:0,t:0,acc:null,na:0,bg:null,s:null,mn:null,mx:0,pp:0,last:0};
+ pu={i,ph:'ready',n:0,t:0,acc:null,na:0,bg:null,hh:[],dd:[],fl:[],dn:0,msg:'',vt:0};
  const o=ov();o.hidden=false;
- o.innerHTML='<video id="cv" class="mir" playsinline muted autoplay></video><div class="cn" id="cn">Lean your phone upright, screen facing you, so your whole body is in view from the side. Tap Start, then step out of view.</div><div class="pc" id="pcn">0</div><div class="cb"><button class="cs" data-a="pux">Cancel</button><button class="cs" data-a="pum">-1</button><button class="cs" data-a="pugo">Start</button><button class="cs" data-a="pup">+1</button></div>';
+ o.innerHTML='<video id="cv" class="mir" playsinline muted autoplay></video><canvas id="sk" class="mir" width="96" height="72"></canvas><div class="cn" id="cn">Prop your phone on the floor, side-on to you, so your whole body is in view. Tap Start, step out of view, then get into the top of a push-up.</div><div class="cf" id="cf"></div><div class="pc" id="pcn">0</div><div class="cb"><button class="cs" data-a="pux">Cancel</button><button class="cs" data-a="pum">-1</button><button class="cs" data-a="pugo">Start</button><button class="cs" data-a="pup">+1</button></div>';
  startStream();
  pu.iv=setInterval(puLoop,70);
 }
 function puLoop(){
  const v=$('#cv');if(!pu||!v||!v.videoWidth||pu.ph==='ready')return;
- const x=cvs.getContext('2d',{willReadFrequently:true});x.drawImage(v,0,0,64,48);
- const D=x.getImageData(0,0,64,48).data,g=new Float32Array(3072);
- for(let k=0;k<3072;k++)g[k]=(D[4*k]+D[4*k+1]+D[4*k+2])/3;
- const now=Date.now(),el=now-pu.t,cn=$('#cn');
+ const x=cvs.getContext('2d',{willReadFrequently:true});x.drawImage(v,0,0,GW,GH);
+ const D=x.getImageData(0,0,GW,GH).data,g=new Float32Array(GN);
+ for(let k=0;k<GN;k++)g[k]=(D[4*k]+D[4*k+1]+D[4*k+2])/3;
+ puStep(g,Date.now());
+}
+/* Body tracking without a neural network: find the body silhouette, locate the shoulder, hip and ankle along it, and from the shoulder height estimate the elbow bend. Works side-on only. */
+function puMask(g,bg){
+ const m=new Uint8Array(GN),mm=new Uint8Array(GN),sm=[];
+ for(let k=0;k<GN;k+=7)sm.push(g[k]-bg[k]);sm.sort((p,q)=>p-q);const dc=sm[sm.length>>1]; /* cancels camera brightness drift */
+ for(let k=0;k<GN;k++)if(Math.abs(g[k]-bg[k]-dc)>30)m[k]=1;
+ for(let r=1;r<GH-1;r++)for(let c=1;c<GW-1;c++){const i=r*GW+c;if(m[i-GW-1]+m[i-GW]+m[i-GW+1]+m[i-1]+m[i]+m[i+1]+m[i+GW-1]+m[i+GW]+m[i+GW+1]>=5)mm[i]=1}
+ return mm;
+}
+function puBody(mm){
+ const top=new Int16Array(GW).fill(-1),bot=new Int16Array(GW).fill(-1);let x0=GW,x1=-1,y0=GH,y1=-1,n=0,sl=0,nl=0,sr=0,nr=0;
+ for(let c=0;c<GW;c++)for(let r=0;r<GH;r++)if(mm[r*GW+c]){n++;if(top[c]<0&&r+2<GH&&mm[(r+1)*GW+c]&&mm[(r+2)*GW+c])top[c]=r;bot[c]=r;if(c<x0)x0=c;if(c>x1)x1=c;if(r<y0)y0=r;if(r>y1)y1=r}
+ const mid=(x0+x1)/2;
+ for(let c=Math.max(0,x0);c<=x1;c++)if(top[c]>=0){if(c<mid){sl+=top[c];nl++}else{sr+=top[c];nr++}}
+ return{x0,x1,y0,y1,n,top,bot,w:x1-x0+1,h:y1-y0+1,head:(sl/Math.max(1,nl)<sr/Math.max(1,nr))?0:1};
+}
+function puPose(B,head){
+ const L=B.w,xf=f=>Math.round(head===0?B.x0+f*(L-1):B.x1-f*(L-1));
+ const tp=c=>{const a=[];for(let d=-1;d<=1;d++){const q=B.top[Math.max(0,Math.min(GW-1,c+d))];if(q>=0)a.push(q)}if(!a.length)return null;a.sort((p,q)=>p-q);return a[a.length>>1]};
+ const xs=xf(.2),xh=xf(.5),xa=xf(.92),ts=tp(xs),th=tp(xh),ta=tp(xa);
+ if(ts===null||th===null||ta===null||xa===xs)return null;
+ const o=PU_OFF*L,line=ts+(ta-ts)*((xh-xs)/(xa-xs));
+ return{xs,xh,xa,L,ys:ts+o,yh:th+o,ya:ta+o,dev:(th-line)/L};
+}
+function puDraw(P,ok){
+ const c=$('#sk');if(!c)return;const x=c.getContext('2d');x.clearRect(0,0,GW,GH);if(!P)return;
+ x.lineWidth=1.2;x.lineJoin='round';x.strokeStyle=x.fillStyle=ok?'#4ade80':'#fbbf24';
+ x.beginPath();x.moveTo(P.xs,P.ys);x.lineTo(P.xh,P.yh);x.lineTo(P.xa,P.ya);x.stroke();
+ [[P.xs,P.ys],[P.xh,P.yh],[P.xa,P.ya]].forEach(p=>{x.beginPath();x.arc(p[0],p[1],1.7,0,6.3);x.fill()});
+ if(pu&&pu.h0){const S=[P.xs,P.ys],W=[P.xs,pu.floor],a=pu.h0/2,d=W[1]-S[1],k=Math.sqrt(Math.max(0,a*a-d*d/4)),E=[P.xs+(pu.head===0?1:-1)*k,(S[1]+W[1])/2];
+  x.strokeStyle=x.fillStyle='#38bdf8';x.beginPath();x.moveTo(S[0],S[1]);x.lineTo(E[0],E[1]);x.lineTo(W[0],W[1]);x.stroke();x.beginPath();x.arc(E[0],E[1],1.7,0,6.3);x.fill()}
+}
+function puSay(t,now){if(now-pu.vt>2500){pu.vt=now;say(t)}}
+function puStep(g,now){
+ const el=now-pu.t,cn=$('#cn'),cf=$('#cf');
  if(pu.ph==='bg'){
   cn.textContent='Step out of view: '+Math.max(0,Math.ceil((3000-el)/1000));
-  if(el>1500){if(!pu.acc)pu.acc=new Float32Array(3072);for(let k=0;k<3072;k++)pu.acc[k]+=g[k];pu.na++}
+  if(el>1500){if(!pu.acc)pu.acc=new Float32Array(GN);for(let k=0;k<GN;k++)pu.acc[k]+=g[k];pu.na++}
   if(el>=3000&&pu.na){pu.bg=pu.acc.map(q=>q/pu.na);pu.ph='pos';pu.t=now;say('Get in position')}
   return;
  }
- /* find the body: pixels that differ from the empty-room picture, cleaned with a 3x3 vote */
- const m=new Uint8Array(3072);
- for(let k=0;k<3072;k++)if(Math.abs(g[k]-pu.bg[k])>30)m[k]=1;
- const mm=new Uint8Array(3072);
- for(let r=1;r<47;r++)for(let c=1;c<63;c++){let s=0;for(let a=-1;a<=1;a++)for(let b=-1;b<=1;b++)s+=m[(r+a)*64+c+b];if(s>=5)mm[r*64+c]=1}
- let x0=64,x1=-1,y0=48,y1=-1,n=0;
- for(let r=0;r<48;r++)for(let c=0;c<64;c++)if(mm[r*64+c]){n++;if(c<x0)x0=c;if(c>x1)x1=c;if(r<y0)y0=r;if(r>y1)y1=r}
- const bw=x1-x0+1,bh=y1-y0+1;
- if(n<60||bw<12){cn.textContent=pu.ph==='pos'?'Get into your push-up position: '+Math.max(0,Math.ceil((5000-el)/1000)):'Body not in view';if(pu.ph==='count')pu.ok=0;return}
+ const B=puBody(puMask(g,pu.bg));
+ if(B.n<60||B.w<GW*.25){puDraw(null);cn.textContent=pu.ph==='pos'?'Get into the top of a push-up, side-on to the phone':'Body not in view';if(cf)cf.textContent='';return}
+ const P=puPose(B,pu.ph==='count'?pu.head:B.head);
  if(pu.ph==='pos'){
-  cn.textContent='Get into your push-up position: '+Math.max(0,Math.ceil((5000-el)/1000));
+  const left=Math.max(0,Math.ceil((5000-el)/1000));cn.textContent='Hold the top of a push-up, side-on: '+left;
+  if(P){pu.hh.push(P.ys);pu.dd.push(P.dev);pu.fl.push(B.y1);if(pu.hh.length>14){pu.hh.shift();pu.dd.shift();pu.fl.shift()}}
+  puDraw(P,true);
   if(el>=5000){
-   /* lock in the starting pose: a wide, low body shape means a push-up position */
-   if(bw<bh*1.3){pu.t=now-3000;cn.textContent='Lie in a push-up position, side-on to the phone, with your whole body in view';say('Side on, whole body in view');return}
-   const sm=[0,0],cnt=[0,0];
-   for(let r=y0;r<=y1;r++)for(let c=x0;c<=x1;c++)if(mm[r*64+c]){const h=c<(x0+x1)/2?0:1;sm[h]+=r;cnt[h]++}
-   pu.head=(sm[0]/Math.max(1,cnt[0])<sm[1]/Math.max(1,cnt[1]))?0:1; /* the upper (higher on screen) end is the shoulders and head */
-   pu.W0=bw;pu.top0=y0;pu.cx0=(x0+x1)/2;pu.hs=null;pu.mn=null;pu.mx=null;pu.pp=0;pu.ph='count';pu.t=now;pu.ok=0;say('Go');
+   const med=a=>a.slice().sort((p,q)=>p-q)[a.length>>1];
+   if(B.w<B.h*1.3){pu.t=now-3000;cn.textContent='Lie side-on to the phone with your whole body in view';puSay('Side on, whole body in view',now)}
+   else if(B.x0<=1||B.x1>=GW-2){pu.t=now-3000;cn.textContent='Move the phone back so your whole body fits';puSay('Move the phone back',now)}
+   else if(!P||pu.hh.length<8){pu.t=now-4000}
+   else{
+    const fl=med(pu.fl),h0=fl-med(pu.hh),spread=Math.max(...pu.hh)-Math.min(...pu.hh);
+    if(h0<6||spread>Math.max(2,.12*h0)){pu.t=now-3000;cn.textContent='Hold still at the top of the push-up';puSay('Hold still at the top',now)}
+    else{pu.head=B.head;pu.W0=B.w;pu.floor=fl;pu.h0=h0;pu.dev0=med(pu.dd);pu.fx0=pu.head===0?B.x1:B.x0;pu.rs=1;pu.dn=0;pu.dvs=undefined;pu.ph='count';pu.t=now;pu.msg='';say('Go')}
+   }
   }
   return;
  }
- /* the shoulder and head end: column band at the upper end of the body */
- const bandW=Math.max(6,Math.round(bw*.3)),c0=pu.head===0?x0:x1-bandW+1;
- let top=47;for(let r=0;r<48;r++){let s=0;for(let c=c0;c<c0+bandW;c++)s+=mm[r*64+c];if(s>=2){top=r;break}}
- pu.hs=pu.hs===null?top:pu.hs*.55+top*.45;
- /* the feet end must stay put, so the dip is the upper body moving while the body stays long */
- const fx=pu.head===0?x1:x0;
- if(pu.fx0===undefined)pu.fx0=fx;
- const scale=Math.max(10,pu.W0*.34),need=Math.max(4,Math.round(scale*.5));
- const still=Math.abs(fx-pu.fx0)<=Math.max(4,pu.W0*.12)&&bw>pu.W0*.6;
- if(!still){cn.textContent='Hold your feet still. Move only your upper body.';if(pu.pp===1&&pu.t0&&now-pu.t0>1500)pu.pp=0;pu.t0=pu.t0||now;return}
- pu.t0=0;
+ if(!P){puDraw(null);return}
+ const fx=pu.head===0?B.x1:B.x0,still=Math.abs(fx-pu.fx0)<=Math.max(3,pu.W0*.12)&&B.w>pu.W0*.6;
+ const r=Math.max(.05,Math.min(1.1,(pu.floor-P.ys)/pu.h0));pu.rs=pu.rs*.5+r*.5;
+ pu.dvs=pu.dvs===undefined?P.dev-pu.dev0:pu.dvs*.5+(P.dev-pu.dev0)*.5;
+ const rr=Math.min(1,pu.rs),elb=Math.round(2*Math.asin(rr)*180/Math.PI),dv=pu.dvs,straight=Math.abs(dv)<=PU_DEV;
+ pu.elb=elb;pu.dv=dv;puDraw(P,straight);
+ cf.innerHTML='Elbow ~'+elb+'\u00b0 \u00b7 hips '+(straight?'straight':dv>0?'sagging':'too high')+(pu.msg?'<br>'+pu.msg:'');
+ if(!still){cn.textContent='Hold your feet still. Move only your upper body.';return}
  cn.textContent='Counting. Do your push-ups.';
- if(pu.mn===null){pu.mn=pu.mx=pu.hs}
- if(pu.pp===0){ if(pu.hs<pu.mn)pu.mn=pu.hs; if(pu.hs-pu.mn>=need){pu.pp=1;pu.mx=pu.hs} }
- else { if(pu.hs>pu.mx)pu.mx=pu.hs;
-  if(pu.mx-pu.hs>=need*.8&&now-pu.last>600){pu.pp=0;pu.mn=pu.hs;pu.last=now;pu.n++;$('#pcn').textContent=pu.n;say(String(pu.n))}}
+ if(!pu.dn){if(pu.rs<PU_START){pu.dn=1;pu.rmin=pu.rs;pu.dmax=Math.abs(dv);pu.ts=now}}
+ else{
+  pu.rmin=Math.min(pu.rmin,pu.rs);pu.dmax=Math.max(pu.dmax,Math.abs(dv));
+  if(pu.rs>=PU_UP){
+   pu.dn=0;const dur=now-pu.ts,emin=Math.round(2*Math.asin(Math.min(1,pu.rmin))*180/Math.PI);
+   if(dur<450)return;
+   if(pu.rmin>PU_DEEP){pu.msg='Not counted: go lower (elbow only ~'+emin+'\u00b0)';puSay('Go lower',now)}
+   else if(pu.dmax>PU_DEV){pu.msg='Not counted: keep your body straight';puSay('Keep your body straight',now)}
+   else{pu.n++;pu.msg='Rep '+pu.n+' counted. Elbow ~'+emin+'\u00b0';$('#pcn').textContent=pu.n;say(String(pu.n))}
+  }
+ }
 }
 try{navigator.permissions.query({name:'camera'}).then(q=>{camDeny=q.state==='denied';q.onchange=()=>{camDeny=q.state==='denied';render()};render()}).catch(()=>{})}catch(e){}
 try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist()}catch(e){}
 if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
 loadPh();
-render();
+try{history.scrollRestoration='manual'}catch(e){}
+render();toTop();
 </script>
 </body>
 </html>
