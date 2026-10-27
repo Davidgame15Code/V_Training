@@ -165,6 +165,15 @@ main.h{padding-top:0}
 .seg{display:flex;gap:6px}
 .seg button{flex:1;min-height:42px;border-radius:10px;border:1px solid var(--line);background:transparent;color:var(--ink);font:600 13px var(--body);padding:0 4px}
 .seg button.on{background:var(--acc);color:var(--onacc);border-color:var(--acc)}
+.danger{display:block;width:100%;border:1.5px solid #ef4444;background:transparent;color:#ef4444;border-radius:14px;padding:15px;font:700 16px var(--body);margin:18px 0 12px}
+.note{padding:10px 14px;border-radius:12px;background:var(--card);border:1px solid #4ade80;margin:8px 0 14px;font-size:14px}
+.mdl{position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.74);display:flex;align-items:center;justify-content:center;padding:24px}
+.mc{width:100%;max-width:420px;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:20px;padding:24px 22px}
+.mc h2{font:700 26px/1.15 var(--disp);margin:0 0 10px}
+.mc p{margin:0 0 16px;color:var(--mute);line-height:1.45}
+.mb{display:block;width:100%;padding:16px;border-radius:14px;font:700 17px var(--body);margin-top:10px;border:0}
+.mb.no{background:var(--ink);color:var(--bg)}
+.mb.yes{background:#dc2626;color:#fff}
 .bwn{font-size:12px;color:var(--mute);margin:4px 0 8px}
 .sw{display:flex;gap:10px;flex-wrap:wrap}
 .sw button.cus{display:grid;place-items:center;background:transparent;color:var(--ink);border:3px solid transparent;box-shadow:0 0 0 1.5px var(--ink)}
@@ -642,6 +651,21 @@ function tile(k){
 }
 const GROUPS=[['up','Upper body',['Push','Pull','Arms and shoulders','Upper body','Chest and triceps','Back and biceps','Shoulders','Arm burner','Posture and back']],['low','Lower body',['Legs','Glutes','Legs and glutes','Glute and leg burner']],['core','Core',['Core','Abs and core','Core burner']],['full','Full body',['Full body','Bodyweight only','Dumbbell only','Cardio burn','Beginner','HIIT','Quick 15','Dumbbell full body 2','Cardio blast']],['xt','Extreme',['Upper Body Extreme 1','Upper Body Extreme 2','Upper Body Extreme 3','Lower Body Extreme 1','Lower Body Extreme 2','Lower Body Extreme 3','Core Extreme','Conditioning Extreme']]];
 let gopen={},lastVK='',hiddenAt=0;
+let erase=null,doneMsg='';
+function eraseHTML(){
+ const e=erase,k=e.kind;let t,p,yes,no;
+ if(k==='all'&&e.step===1){t='Are you sure?';p='This deletes your workouts, photos, streaks and progress. Your settings stay as they are, including appearance, text size, units and body weight.';yes='Yes';no='No'}
+ else if(k==='all'){t='Are you really, really sure?';p='This cannot be undone. Everything will be gone for good.';yes='Yes, erase everything';no='No, keep my data'}
+ else{t='Delete all exercise data?';p='This removes every logged workout and your progress charts, and resets your streaks. Photos and settings stay. This cannot be undone.';yes='Yes, delete it';no='No'}
+ return '<div class="mdl" role="alertdialog" aria-modal="true" aria-label="'+t+'"><div class="mc"><h2>'+t+'</h2><p>'+p+'</p><button class="mb no" data-a="wno">'+no+'</button><button class="mb yes" data-a="wyes">'+yes+'</button></div></div>';
+}
+/* Erase everything you logged but leave every setting (appearance, text size, units, body weight) alone. */
+function doErase(){
+ S.history=[];S.goals={};S.sv={};S.active=null;rest=null;tm=null;PH=[];rw=null;pg=0;sg=null;
+ tx('readwrite',s=>s.clear()).catch(()=>{});save();erase=null;doneMsg='All data erased. Your settings were kept.';tab='settings';render();
+}
+function doDelEx(){const k=wkKey(new Date()),g=S.goals[k];S.history=[];S.goals=g?{[k]:g}:{};S.sv={};save();erase=null;render()}
+
 function grp(){
  const placed=new Set(GROUPS.flatMap(g=>g[2])),rest=Object.keys(R).filter(k=>!k.startsWith('Vergil')&&!placed.has(k));
  return GROUPS.map((g,gi)=>{const ks=g[2].filter(k=>R[k]).concat(g[0]==='full'?rest:[]),open=!!gopen[g[0]];
@@ -649,7 +673,7 @@ function grp(){
   (open?(g[0]==='xt'?'<p class="vn">Very hard. Warm up first, rest fully between sets, and stop if your form breaks. Needs a pull-up bar, two sturdy chairs and a wall.</p>':'')+'<div class="tg">'+ks.map(tile).join('')+'</div>':'')}).join('');
 }
 function toTop(){try{window.scrollTo(0,0);document.documentElement.scrollTop=0;document.body.scrollTop=0}catch(e){}}
-function resetHome(){tab='train';viewing=sel=null;picking=false;gopen={};vopen=false;cp=false;cpPrev=null;render();toTop()}
+function resetHome(){erase=null;tab='train';viewing=sel=null;picking=false;gopen={};vopen=false;cp=false;cpPrev=null;render();toTop()}
 function homeBase(){
  return wkv()+(phReady&&due()?'<button class="rem" data-a="gophotos">Monthly photo due. Tap to take it.</button>':'')+
  '<h2 class="sec">Workouts</h2><p class="vn">Dumbbells and bodyweight only. Weights fill in from your last session. Tap a body area to open it.</p>'+grp();
@@ -724,7 +748,7 @@ async function doImport(f){
 function setv(){
  const o=S.set,T=strk(),seg=(a,arr,cur)=>'<div class="seg">'+arr.map(x=>'<button class="'+(String(cur)===String(x[0])?'on':'')+'" data-a="'+a+'" data-v="'+x[0]+'">'+x[1]+'</button>').join('')+'</div>';
  const mo=Object.values(S.sv).filter(v=>v===mkey(new Date())).length;
- return '<h1>Settings</h1><p class="sub">Make it yours.</p><h2 class="sec">Appearance</h2>'+
+ return '<h1>Settings</h1><p class="sub">Make it yours.</p>'+(doneMsg?'<p class="note">'+doneMsg+'</p>':'')+'<h2 class="sec">Appearance</h2>'+
  '<div class="sc"><b>Mode</b>'+seg('smode',[['dark','Dark'],['light','Light'],['color','Color'],['auto','Auto']],o.mode)+'<small>Dark is black and gray, Light is white and gray, Color tints the whole app with your base color, Auto follows your phone.</small></div>'+
  (o.mode==='color'?'<div class="sc"><b>Base color</b><div class="sw">'+Object.keys(HUES).map(n=>'<button class="'+(o.color===n?'on':'')+'" data-a="scolor" data-v="'+n+'" aria-label="'+n+'" style="background:hsl('+HUES[n]+' '+(n==='Graphite'?12:75)+'% 50%)"></button>').join('')+'<button class="cus'+(o.color==='Custom'?' on':'')+'" data-a="cpop" aria-label="Custom color" style="'+(o.color==='Custom'&&o.custom?'background:rgb('+o.custom.r+','+o.custom.g+','+o.custom.b+');color:'+(lumRgb(o.custom.r,o.custom.g,o.custom.b)>.4?'#000':'#fff'):'')+'"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div><small id="cname">'+(o.color==='Custom'?'Custom':esc(o.color))+'</small>'+(cp?cpHTML():'')+'</div>'
  :'<div class="sc"><b>Accent color</b><small>Dark and Light use your accent color ('+(o.color==='Custom'?'Custom':esc(o.color))+') for buttons and highlights. Switch to Color mode to change it or tint the whole app.</small></div>')+
@@ -732,6 +756,7 @@ function setv(){
  '<h2 class="sec">Body weight</h2><div class="sc"><b>'+(S.bw?bwShow()+' '+S.unit:'Not set')+'</b><div class="cpr"><input type="number" class="hx" id="bwi" data-bw="1" inputmode="decimal" min="0" max="999" step="0.1" placeholder="Your body weight" value="'+(S.bw?bwShow():'')+'" aria-label="Body weight"><span style="width:auto;color:var(--ink)">'+S.unit+'</span></div><div class="seg" style="margin-top:10px"><button data-a="unit" data-u="lb" class="'+(S.unit==='lb'?'on':'')+'">lb</button><button data-a="unit" data-u="kg" class="'+(S.unit==='kg'?'on':'')+'">kg</button></div><small>Used for every bodyweight exercise, like push-ups, squats and pull-ups. Each rep counts your body weight plus any weight you add, so a push-up with 25 added counts as your body weight + 25. Dumbbell exercises count only the weight you enter, and timed holds like planks are not counted. Stays on this phone.</small></div>'+
  '<h2 class="sec">Streak goal</h2><div class="sc"><b>'+(T.goal?'This week: '+T.goal+(T.goal===1?' day':' days')+' a week':'No goal set for this week yet')+'</b><div class="seg">'+[1,2,3,4,5,6,7].map(n=>'<button class="'+((sg||T.goal)===n?'on':'')+'" data-a="sgsel" data-n="'+n+'">'+n+'</button>').join('')+'</div><div class="seg" style="margin-top:8px"><button class="'+((sg||T.goal)===7?'on':'')+'" data-a="sgsel" data-n="7">Every day</button><button class="okb" data-a="sgok"'+((sg&&sg!==T.goal)||(!T.goal&&sg)?'':' disabled')+'>OK</button></div><small>Days you will work out each week. A week counts toward your week streak when you hit it, and your day streak only breaks when a week is missed. Changing it here updates this week only.</small></div>'+
  '<h2 class="sec">Streak saves</h2><div class="sc"><b>'+T.saves+' of 2 saves left this month</b><small>You get 2 per month. When you miss a week\u2019s goal and you had a streak going, a save is used automatically so your streak stays alive. A save keeps the streak but does not add a week. Saves reset on the 1st of the month. '+mo+' used so far this month.</small></div>'+
+ '<button class="danger" data-a="wipe">Erase all data</button>'+
  '<div class="sc"><b>Version</b><small>Version '+APP_VERSION+'</small></div>';
 }
 function cpHTML(){
@@ -769,6 +794,7 @@ document.addEventListener('input',e=>{const t=e.target,k=t.dataset&&t.dataset.cp
  else if(k==='hex'){const m=/^#?([0-9a-f]{6})$/i.exec(t.value.trim());if(m){const n=parseInt(m[1],16);c={r:n>>16,g:(n>>8)&255,b:n&255}}}
  if(c){const q=rgb2hsv(c.r,c.g,c.b);cpS={h:q.s?q.h:cpS.h,s:q.s,v:q.v};S.set.custom=c;S.set.color='Custom';applyTheme();cpSync()}
 });
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&erase){erase=null;render()}});
 document.addEventListener('change',e=>{if(e.target.dataset&&e.target.dataset.cp)save();if(e.target.dataset&&e.target.dataset.bw){const v=parseFloat(e.target.value);S.bw=v>0&&v<1000?(S.unit==='kg'?v:v/KGLB):0;save();render()}});
 document.addEventListener('input',e=>{if(e.target.id!=='ps')return;const q=e.target.value.trim().toLowerCase();let n=0;document.querySelectorAll('.pl [data-a=pickx]').forEach(b=>{const on=!q||b.dataset.q.includes(q);b.hidden=!on;if(on)n++});const m=$('#pn');if(m)m.hidden=n>0});
 function logv(){
@@ -790,7 +816,9 @@ function render(){
  $('#app').className=tab==='train'&&!S.active?'h':'';
  document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('on',b.dataset.t===tab));
  wakeSync();
- $('#app').innerHTML=tab==='train'?(S.active?active():home()):tab==='photos'?photov():tab==='prog'?progv():tab==='insp'?inspv():tab==='reward'?rewardv():tab==='settings'?setv():logv()+'<button class="lnk" data-a="wipe">Erase all data</button>';
+ if(tab!=='settings')doneMsg='';
+ $('#app').innerHTML=(tab==='train'?(S.active?active():home()):tab==='photos'?photov():tab==='prog'?progv():tab==='insp'?inspv():tab==='reward'?rewardv():tab==='settings'?setv():logv())+(erase?eraseHTML():'');
+ if(erase){const nb=document.querySelector('.mdl .no');if(nb)nb.focus()}
  tick();
  if(tab==='settings'&&cp)cpInit();
  const vk=tab+'|'+(S.active?S.active.name:'')+'|'+(picking?1:0)+'|'+(viewing==null?'':viewing);if(vk!==lastVK){lastVK=vk;toTop()}
@@ -889,9 +917,10 @@ document.addEventListener('click',e=>{
   case 'insp':tab='insp';render();break;
   case 'gotrain':tab='train';render();break;
   case 'rwdone':rw=null;tab='log';render();break;
-  case 'wipe':
-   if(armed!==b){armed=b;b.textContent='Tap again to erase everything';return}
-   S.history=[];S.goals={};S.bw=0;S.sv={};S.set={mode:'color',color:'Blue',size:100,custom:{r:47,g:145,b:229}};cp=false;applyTheme();PH=[];S.unit='lb';S.active=null;rest=null;tm=null;try{localStorage.removeItem(KEY)}catch(e){}tx('readwrite',s=>s.clear()).catch(()=>{});render();break;
+  case 'wipe':erase={kind:'all',step:1};render();break;
+  case 'delex':erase={kind:'ex'};render();break;
+  case 'wno':erase=null;render();break;
+  case 'wyes':if(!erase)break;if(erase.kind==='all'&&erase.step===1){erase.step=2;render()}else if(erase.kind==='all')doErase();else doDelEx();break;
   case 'cam':openCam();break;
   case 'shot':snap();break;
   case 'flip':face=face==='user'?'environment':'user';showCam('');startStream();break;
@@ -1023,7 +1052,7 @@ function progv(){
  '<h2>Workouts per week</h2><div class="wb">'+bars.map(c=>'<i style="height:'+Math.round(c/mx*100)+'%"><b>'+c+'</b></i>').join('')+'</div><div class="wl"><span>8 weeks ago</span><span>last 7 days</span></div>'+
  '<h2>Exercise progress</h2><select id="pes" aria-label="Exercise">'+names.map(n=>'<option'+(n===pe?' selected':'')+'>'+esc(n)+'</option>').join('')+'</select>'+
  '<div class="cht"><svg viewBox="0 0 300 110" role="img" aria-label="Progress chart for '+esc(pe)+'"><polyline points="'+xy.map(q=>q.join(',')).join(' ')+'" fill="none" stroke="var(--acc)" stroke-width="3" stroke-linejoin="round"/>'+xy.map(q=>'<circle cx="'+q[0]+'" cy="'+q[1]+'" r="4" fill="var(--acc)"/>').join('')+'</svg></div>'+
- '<p class="sub">'+pts.length+' session'+(pts.length>1?'s':'')+'. First: '+pts[0]+' '+unit+'. Latest: '+pts[pts.length-1]+' '+unit+(pts.length>1?' ('+(d>=0?'+':'')+d+')':'')+'.</p>';
+ '<p class="sub">'+pts.length+' session'+(pts.length>1?'s':'')+'. First: '+pts[0]+' '+unit+'. Latest: '+pts[pts.length-1]+' '+unit+(pts.length>1?' ('+(d>=0?'+':'')+d+')':'')+'.</p><button class="danger" data-a="delex">Delete all exercise data</button>';
 }
 document.addEventListener('visibilitychange',()=>{document.body.classList.toggle('cover',document.hidden);if(document.hidden){hiddenAt=Date.now();if(stream)closeCam()}else if(hiddenAt&&Date.now()-hiddenAt>60000&&!S.active&&!pu&&!stream)resetHome();wakeSync()});
 addEventListener('pageshow',e=>{if(e.persisted)resetHome()});
